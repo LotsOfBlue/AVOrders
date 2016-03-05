@@ -30,18 +30,25 @@ public class NewOrderController {
 		}
 
 		//Get the phone number from the text field
-		Integer phoneNo;
+		Integer phoneNo = null;
 		if(phoneNoField.getText().trim().equals("")) {
 			phoneNo = null;
 		}
 		else {
-			phoneNo = Integer.parseInt(phoneNoField.getText().trim());
+			try {
+				phoneNo = Integer.parseInt(phoneNoField.getText().trim());
+			}
+			catch (NumberFormatException e) {
+				phoneNoField.clear();
+				phoneNoField.setPromptText("Endast siffror (0-9) tillåtna.");
+				clearToContinue = false;
+			}
 		}
 
 		//Get the item name from the text field
 		String item = new String();
 		if(itemField.getText().trim().equals("")) {
-			itemField.setPromptText("Du måste ange ett telefonnummer.");
+			itemField.setPromptText("Du måste ange en vara.");
 			clearToContinue = false;
 		}
 		else {
@@ -49,23 +56,38 @@ public class NewOrderController {
 		}
 
 		//Get the item's number from the text field
-		Integer itemNo;
+		Integer itemNo = null;
 		if(itemNoField.getText().trim().equals("")) {
 			itemNo = null;
 		}
 		else {
-			itemNo = Integer.parseInt(itemNoField.getText().trim());
+			try {
+				itemNo = Integer.parseInt(itemNoField.getText().trim());
+			}
+			catch (NumberFormatException e) {
+				itemNoField.clear();
+				itemNoField.setPromptText("Endast siffror (0-9) tillåtna.");
+				clearToContinue = false;
+			}
 		}
 
 		//Get the item's price from the text field
-		Integer price;
+		Integer price = null;
 		if(priceField.getText().trim().equals("")) {
 			price = null;
 		}
 		else {
-			price = Integer.parseInt((priceField.getText().trim()));
+			try {
+				price = Integer.parseInt(priceField.getText().trim());
+			}
+			catch (NumberFormatException e) {
+				priceField.clear();
+				priceField.setPromptText("Endast siffror (0-9) tillåtna.");
+				clearToContinue = false;
+			}
 		}
 
+		//If everything's alright, create the order and exit the pane
 		if(clearToContinue) {
 			createOrder(
 					name,
@@ -74,6 +96,8 @@ public class NewOrderController {
 					itemNo,
 					price,
 					commentField.getText().trim());
+
+			Main.mainWindowController.exitNewOrder();
 		}
 	}
 
@@ -91,6 +115,6 @@ public class NewOrderController {
 	public void cancel(ActionEvent event) {
 		System.out.println("Avbröt...");
 
-		Main.mainWindowController.cancelNewOrder();
+		Main.mainWindowController.exitNewOrder();
 	}
 }

@@ -70,7 +70,7 @@ public class WindowController {
 	 * Cancel the creation of a new order,
 	 * and reset the buttons to their default
 	 */
-	public void cancelNewOrder() {
+	public void exitNewOrder() {
 		infoPane.getChildren().remove(0);
 		newButton.setDisable(false);
 	}
