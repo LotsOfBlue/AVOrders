@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-public class Controller {
+public class WindowController {
 	public Button newButton;
 	public Button editButton;
 	public Button deleteButton;
@@ -15,7 +15,7 @@ public class Controller {
 	private void initialize() {
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
-		System.out.println("Startar Controller...");
+		System.out.println("Startar WindowController...");
 	}
 
 	public void newOrder(ActionEvent event) {
