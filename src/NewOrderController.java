@@ -22,6 +22,7 @@ public class NewOrderController {
 		//Get the customer name from the text field
 		String name = new String();
 		if(nameField.getText().trim().equals("")) {
+			nameField.setPromptText("Du måste ange ett namn.");
 			clearToContinue = false;
 		}
 		else {
@@ -40,6 +41,7 @@ public class NewOrderController {
 		//Get the item name from the text field
 		String item = new String();
 		if(itemField.getText().trim().equals("")) {
+			itemField.setPromptText("Du måste ange ett telefonnummer.");
 			clearToContinue = false;
 		}
 		else {
