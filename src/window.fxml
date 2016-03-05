@@ -6,40 +6,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane layoutX="-3.0" layoutY="44.0" prefHeight="74.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Separator layoutX="247.0" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <AnchorPane layoutX="253.0" prefHeight="200.0" prefWidth="550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane layoutX="174.0" layoutY="392.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <Button fx:id="newButton" layoutX="460.0" layoutY="10.0" mnemonicParsing="false" prefWidth="60.0" text="Ny" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="editButton" layoutX="375.0" layoutY="9.0" mnemonicParsing="false" text="Redigera" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="23.0" layoutY="13.0" mnemonicParsing="false" text="Ta bort" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <Separator prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+    <AnchorPane layoutX="-3.0" layoutY="44.0" prefHeight="74.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+        <VBox fx:id="listPane" prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Separator layoutX="247.0" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane layoutX="253.0" prefHeight="200.0" prefWidth="550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="infoPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutX="174.0" layoutY="392.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <Button fx:id="newButton" layoutX="460.0" layoutY="10.0" mnemonicParsing="false" onAction="#newOrder" prefWidth="60.0" text="Ny" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="editButton" layoutX="375.0" layoutY="9.0" mnemonicParsing="false" onAction="#editOrder" text="Redigera" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="deleteButton" layoutX="23.0" layoutY="13.0" mnemonicParsing="false" onAction="#deleteOrder" text="Ta bort" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Separator prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </AnchorPane>
-         </children>
-      </AnchorPane>
-      <Separator maxWidth="1.7976931348623157E308" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0" />
-   </children>
+        </AnchorPane>
+    </AnchorPane>
+    <Separator maxWidth="1.7976931348623157E308" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0" />
 </AnchorPane>
