@@ -1,14 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order {
 
 	private final int id;
 	private String name;
-	private int phoneNo;
+	private Integer phoneNo;
 	private String item;
-	private int itemNo;
-	private int price;
+	private Integer itemNo;
+	private Integer price;
 	private String comment;
 
-	public Order(int id, String name, int phoneNo, String item, int itemNo, int price, String comment) {
+	private static List<Order> allOrders = new ArrayList<>();
+
+	public Order(int id, String name, Integer phoneNo, String item, Integer itemNo, Integer price, String comment) {
 		this.id = id;
 		this.name = name;
 		this.phoneNo = phoneNo;
@@ -16,9 +21,11 @@ public class Order {
 		this.itemNo = itemNo;
 		this.price = price;
 		this.comment = comment;
+
+		allOrders.add(this);
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -30,7 +37,7 @@ public class Order {
 		this.name = name;
 	}
 
-	public int getPhoneNo() {
+	public Integer getPhoneNo() {
 		return phoneNo;
 	}
 
@@ -46,7 +53,7 @@ public class Order {
 		this.item = item;
 	}
 
-	public int getItemNo() {
+	public Integer getItemNo() {
 		return itemNo;
 	}
 
@@ -54,7 +61,7 @@ public class Order {
 		this.itemNo = itemNo;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
@@ -68,5 +75,9 @@ public class Order {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public static List<Order> getOrders() {
+		return allOrders;
 	}
 }

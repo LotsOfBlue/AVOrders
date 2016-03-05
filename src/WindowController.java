@@ -15,12 +15,19 @@ public class WindowController {
 	public AnchorPane infoPane;
 
 	@FXML
+	/**
+	 * Set the window to its initial state
+	 */
 	private void initialize() {
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
 		System.out.println("Startar WindowController...");
 	}
 
+	/**
+	 * Prepare the window for creating a new order
+	 * @param event
+	 */
 	public void newOrder(ActionEvent event) {
 		System.out.println("Ny beställning!");
 
@@ -39,14 +46,32 @@ public class WindowController {
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda newOrder.fxml");
 		}
-
 	}
 
+	/**
+	 * Prepare the window for editing an order
+	 * @param event
+	 */
 	public void editOrder(ActionEvent event) {
 		System.out.println("Redigerar beställning!");
+		//TODO
 	}
 
+	/**
+	 * Delete the current order
+	 * @param event
+	 */
 	public void deleteOrder(ActionEvent event) {
 		System.out.println("Tar bort beställning!");
+		//TODO
+	}
+
+	/**
+	 * Cancel the creation of a new order,
+	 * and reset the buttons to their default
+	 */
+	public void cancelNewOrder() {
+		infoPane.getChildren().remove(0);
+		newButton.setDisable(false);
 	}
 }
