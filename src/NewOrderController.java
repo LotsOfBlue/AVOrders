@@ -19,6 +19,6 @@ public class NewOrderController {
 	}
 
 	public void cancel(ActionEvent event) {
-		System.out.println("Avbröt");
+		System.out.println("Avbröt...");
 	}
 }
