@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -13,15 +14,21 @@ public class WindowController {
 	public Button deleteButton;
 	public VBox listPane;
 	public AnchorPane infoPane;
+	public ChoiceBox sortModeBox;
 
 	@FXML
 	/**
 	 * Set the window to its initial state
 	 */
 	private void initialize() {
+		//TODO
+		System.out.println("Startar WindowController...");
+
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
-		System.out.println("Startar WindowController...");
+
+		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
+		sortModeBox.setValue("ID (stigande)");
 	}
 
 	/**
@@ -29,6 +36,7 @@ public class WindowController {
 	 * @param event
 	 */
 	public void newOrder(ActionEvent event) {
+		//TODO
 		System.out.println("Ny beställning!");
 
 		//Disable the buttons
@@ -53,8 +61,8 @@ public class WindowController {
 	 * @param event
 	 */
 	public void editOrder(ActionEvent event) {
-		System.out.println("Redigerar beställning!");
 		//TODO
+		System.out.println("Redigerar beställning!");
 	}
 
 	/**
@@ -62,8 +70,8 @@ public class WindowController {
 	 * @param event
 	 */
 	public void deleteOrder(ActionEvent event) {
-		System.out.println("Tar bort beställning!");
 		//TODO
+		System.out.println("Tar bort beställning!");
 	}
 
 	/**
