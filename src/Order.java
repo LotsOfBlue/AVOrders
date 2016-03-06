@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +121,6 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "#" + id + "\t\t\t\t\t\t" + creationDate + "\n" + name + "\n" + item;
+		return "#" + id + "\t\t\t\t\t       " + creationDate + "\n" + name + "\n" + item;
 	}
 }
