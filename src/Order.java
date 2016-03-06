@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,19 +11,31 @@ public class Order {
 	private Integer itemNo;
 	private Integer price;
 	private String comment;
+	private final LocalDate creationDate;
+	private LocalDate orderedDate;
+	private LocalDate receivedDate;
+	private LocalDate deliveredDate;
 
 	private static List<Order> allOrders = new ArrayList<>();
 
 	public Order(int id, String name, Integer phoneNo, String item, Integer itemNo, Integer price, String comment) {
+		//TODO
 		this.id = id;
+		//Set parameters from user input
 		this.name = name;
 		this.phoneNo = phoneNo;
 		this.item = item;
 		this.itemNo = itemNo;
 		this.price = price;
 		this.comment = comment;
+		//Set creation date
+		this.creationDate = LocalDate.now();
 
 		allOrders.add(this);
+	}
+
+	public static List<Order> getOrders() {
+		return allOrders;
 	}
 
 	public Integer getId() {
@@ -77,7 +90,36 @@ public class Order {
 		this.comment = comment;
 	}
 
-	public static List<Order> getOrders() {
-		return allOrders;
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+
+	public LocalDate getOrderedDate() {
+		return orderedDate;
+	}
+
+	public void setOrderedDate(LocalDate orderedDate) {
+		this.orderedDate = orderedDate;
+	}
+
+	public LocalDate getReceivedDate() {
+		return receivedDate;
+	}
+
+	public void setReceivedDate(LocalDate receivedDate) {
+		this.receivedDate = receivedDate;
+	}
+
+	public LocalDate getDeliveredDate() {
+		return deliveredDate;
+	}
+
+	public void setDeliveredDate(LocalDate deliveredDate) {
+		this.deliveredDate = deliveredDate;
+	}
+
+	@Override
+	public String toString() {
+		return "#" + id + "\t\t\t\t\t\t" + creationDate + "\n" + name + "\n" + item;
 	}
 }

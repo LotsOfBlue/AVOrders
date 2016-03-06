@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -12,9 +13,9 @@ public class WindowController {
 	public Button newButton;
 	public Button editButton;
 	public Button deleteButton;
-	public VBox listPane;
 	public AnchorPane infoPane;
 	public ChoiceBox sortModeBox;
+	public ListView listView;
 
 	@FXML
 	/**
@@ -29,6 +30,12 @@ public class WindowController {
 
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
 		sortModeBox.setValue(sortModeBox.getItems().get(0));
+
+		for (int i = 0; i < 100; i++) {
+			new Order(i, "Kundnamn", 123456789, "Vara", 1234, 100, "");
+		}
+
+		listView.getItems().addAll(Order.getOrders());
 	}
 
 	/**
