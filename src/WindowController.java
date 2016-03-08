@@ -30,9 +30,9 @@ public class WindowController {
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
 		sortModeBox.setValue(sortModeBox.getItems().get(0));
 
-		for (int i = 0; i < 100; i++) {
+		/*for (int i = 0; i < 100; i++) {
 			new Order(i, "Kundnamn", 123456789, "Vara", 1234, 100, "");
-		}
+		}*/
 
 		refreshList();
 	}
@@ -41,8 +41,10 @@ public class WindowController {
 	 * Empties the listview and adds all orders anew.
 	 */
 	private void refreshList() {
+		//TODO sort standard
+		OrderIO.saveToFile();
 		listView.getItems().removeAll(OrderIO.getOrders());
-		//TODO sort
+		//TODO sort choicebox
 		listView.getItems().addAll(OrderIO.getOrders());
 	}
 
