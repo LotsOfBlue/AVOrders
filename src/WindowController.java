@@ -41,7 +41,8 @@ public class WindowController {
 	 * Empties the listview and adds all orders anew.
 	 */
 	private void refreshList() {
-		//TODO sort standard
+		//Sorts in the regular way before saving
+		OrderIO.getOrders().sort(new IDSort());
 		OrderIO.saveToFile();
 		listView.getItems().removeAll(OrderIO.getOrders());
 		//TODO sort choicebox
