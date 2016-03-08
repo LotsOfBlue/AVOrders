@@ -109,7 +109,7 @@ public class NewOrderController {
 			Integer price,
 			String comment) {
 		new Order(0, name, phoneNo, item, itemNo, price, comment);
-		System.out.println(Order.getOrders());
+		System.out.println(OrderIO.getOrders());
 	}
 
 	public void cancel(ActionEvent event) {

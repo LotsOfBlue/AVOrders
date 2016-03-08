@@ -33,11 +33,8 @@ public class Order implements Serializable{
 		//Set creation date
 		this.creationDate = LocalDate.now();
 
-		allOrders.add(this);
-	}
-
-	public static List<Order> getOrders() {
-		return allOrders;
+		//allOrders.add(this);
+		OrderIO.addOrder(this);
 	}
 
 	public Integer getId() {

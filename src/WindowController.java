@@ -35,7 +35,7 @@ public class WindowController {
 			new Order(i, "Kundnamn", 123456789, "Vara", 1234, 100, "");
 		}
 
-		listView.getItems().addAll(Order.getOrders());
+		listView.getItems().addAll(OrderIO.getOrders());
 	}
 
 	/**
