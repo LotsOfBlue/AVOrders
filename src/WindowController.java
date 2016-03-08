@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -35,6 +34,15 @@ public class WindowController {
 			new Order(i, "Kundnamn", 123456789, "Vara", 1234, 100, "");
 		}
 
+		refreshList();
+	}
+
+	/**
+	 * Empties the listview and adds all orders anew.
+	 */
+	private void refreshList() {
+		listView.getItems().removeAll(OrderIO.getOrders());
+		//TODO sort
 		listView.getItems().addAll(OrderIO.getOrders());
 	}
 
@@ -88,5 +96,6 @@ public class WindowController {
 	public void exitNewOrder() {
 		infoPane.getChildren().remove(0);
 		newButton.setDisable(false);
+		refreshList();
 	}
 }
