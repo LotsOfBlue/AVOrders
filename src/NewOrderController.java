@@ -15,74 +15,45 @@ public class NewOrderController {
 	public Button cancelButton;
 
 	public void finishCreate(ActionEvent event) {
+		//TODO
 		System.out.println("Klar med nya ordern!");
+
+		//Gather all text fields for easy access
+		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
+
+		//Clear all prompts from the text fields
+		for (int i = 0; i < allFields.length - 1; i++) {
+			allFields[i].setPromptText("");
+		}
 
 		Boolean clearToContinue = true;
 
 		//Get the customer name from the text field
-		String name = new String();
-		if(nameField.getText().trim().equals("")) {
+		String name = nameField.getText().trim();
+		if(name.equals("")) {
 			nameField.setPromptText("Du måste ange ett namn.");
 			clearToContinue = false;
 		}
-		else {
-			name = nameField.getText().trim();
-		}
 
 		//Get the phone number from the text field
-		Integer phoneNo = null;
-		if(phoneNoField.getText().trim().equals("")) {
-			phoneNo = null;
-		}
-		else {
-			try {
-				phoneNo = Integer.parseInt(phoneNoField.getText().trim());
-			}
-			catch (NumberFormatException e) {
-				phoneNoField.clear();
-				phoneNoField.setPromptText("Endast siffror (0-9) tillåtna.");
-				clearToContinue = false;
-			}
-		}
+		Integer phoneNo = checkNumberField(phoneNoField);
 
 		//Get the item name from the text field
-		String item = new String();
-		if(itemField.getText().trim().equals("")) {
+		String item = itemField.getText().trim();
+		if(item.equals("")) {
 			itemField.setPromptText("Du måste ange en vara.");
 			clearToContinue = false;
 		}
-		else {
-			item = itemField.getText().trim();
-		}
 
 		//Get the item's number from the text field
-		Integer itemNo = null;
-		if(itemNoField.getText().trim().equals("")) {
-			itemNo = null;
-		}
-		else {
-			try {
-				itemNo = Integer.parseInt(itemNoField.getText().trim());
-			}
-			catch (NumberFormatException e) {
-				itemNoField.clear();
-				itemNoField.setPromptText("Endast siffror (0-9) tillåtna.");
-				clearToContinue = false;
-			}
-		}
+		Integer itemNo = checkNumberField(itemNoField);
 
 		//Get the item's price from the text field
-		Integer price = null;
-		if(priceField.getText().trim().equals("")) {
-			price = null;
-		}
-		else {
-			try {
-				price = Integer.parseInt(priceField.getText().trim());
-			}
-			catch (NumberFormatException e) {
-				priceField.clear();
-				priceField.setPromptText("Endast siffror (0-9) tillåtna.");
+		Integer price = checkNumberField(priceField);
+
+		//If any field contains prompt text, the order can't be created
+		for (int i = 0; i < allFields.length - 1; i++) {
+			if (!allFields[i].getPromptText().equals("")) {
 				clearToContinue = false;
 			}
 		}
@@ -101,6 +72,36 @@ public class NewOrderController {
 		}
 	}
 
+	/**
+	 * Checks if the textfield contains a number,
+	 * and displays a prompt in it if it doesn't.
+	 * @param field The textfiled to check
+	 * @return null if the field is empty or contains letters,
+	 * or an integer if it contains a number
+	 */
+	private Integer checkNumberField(TextField field) {
+		Integer result = null;
+		if(!field.getText().trim().equals(""))
+			try {
+				result = Integer.parseInt(field.getText().trim());
+			}
+			catch (NumberFormatException e) {
+				field.clear();
+				field.setPromptText("Endast siffror (0-9) tillåtna.");
+			}
+
+		return result;
+	}
+
+	/**
+	 * Creates a new Order object with the given parameters
+	 * @param name
+	 * @param phoneNo
+	 * @param item
+	 * @param itemNo
+	 * @param price
+	 * @param comment
+	 */
 	private void createOrder(
 			String name,
 			Integer phoneNo,
@@ -109,10 +110,12 @@ public class NewOrderController {
 			Integer price,
 			String comment) {
 		new Order(0, name, phoneNo, item, itemNo, price, comment);
-		System.out.println(OrderIO.getOrders());
+		//TODO
+		//System.out.println(OrderIO.getOrders());
 	}
 
 	public void cancel(ActionEvent event) {
+		//TODO
 		System.out.println("Avbröt...");
 
 		Main.mainWindowController.exitNewOrder();
