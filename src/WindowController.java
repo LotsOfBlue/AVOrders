@@ -81,10 +81,15 @@ public class WindowController {
 
 		//Place the correct pane in infoPane
 		try {
-			AnchorPane newPane = FXMLLoader.load(getClass().getResource("newOrder.fxml"));
-			newPane.setPrefWidth(infoPane.getWidth());
-			newPane.setPrefHeight(infoPane.getHeight());
-			infoPane.getChildren().add(newPane);
+			FXMLLoader loader = new FXMLLoader();
+			AnchorPane newOrderPane = loader.load(getClass().getResource("newOrder.fxml").openStream());
+			newOrderPane.setPrefWidth(infoPane.getWidth());
+			newOrderPane.setPrefHeight(infoPane.getHeight());
+			infoPane.getChildren().add(newOrderPane);
+
+			//Gives input focus to the name field
+			NewOrderController controller = loader.getController();
+			controller.nameField.requestFocus();
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda newOrder.fxml");
