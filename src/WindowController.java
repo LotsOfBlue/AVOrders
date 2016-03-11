@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.Comparator;
 
 public class WindowController {
 	public Button newButton;
@@ -15,6 +16,8 @@ public class WindowController {
 	public AnchorPane infoPane;
 	public ChoiceBox sortModeBox;
 	public ListView listView;
+
+	private Comparator[] comparators;
 
 	@FXML
 	/**
@@ -29,6 +32,12 @@ public class WindowController {
 
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
 		sortModeBox.setValue(sortModeBox.getItems().get(0));
+
+		//Store all available comparators for easy access
+		comparators = new Comparator[sortModeBox.getItems().size()];
+		comparators[0] = new IDSort();
+		comparators[1] = new ReverseIDSort();
+		comparators[2] = new CustomerSort();
 
 		/*for (int i = 0; i < 100; i++) {
 			new Order(i, "Kundnamn", 123456789, "Vara", 1234, 100, "");
@@ -50,12 +59,9 @@ public class WindowController {
 		listView.getItems().removeAll(OrderIO.getOrders());
 
 		//Rearrange the list of orders if the sorting mode is not the default
-		if (sortModeBox.getSelectionModel().getSelectedIndex() == 1) {
-			OrderIO.getOrders().sort(new ReverseIDSort());
-		}
-		else if (sortModeBox.getSelectionModel().getSelectedIndex() == 2){
-			OrderIO.getOrders().sort(new CustomerSort());
-		}
+		int i = sortModeBox.getSelectionModel().getSelectedIndex();
+		OrderIO.getOrders().sort(comparators[i]);
+
 		//Fill the pane with the new orders
 		listView.getItems().addAll(OrderIO.getOrders());
 	}
