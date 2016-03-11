@@ -38,14 +38,25 @@ public class WindowController {
 	}
 
 	/**
-	 * Empties the listview and adds all orders anew.
+	 * Empties the listview and adds all orders anew, while
+	 * rearranging the list as necessary and saving all orders.
 	 */
 	private void refreshList() {
 		//Sorts in the regular way before saving
 		OrderIO.getOrders().sort(new IDSort());
 		OrderIO.saveToFile();
+
+		//Empty the pane
 		listView.getItems().removeAll(OrderIO.getOrders());
-		//TODO sort choicebox
+
+		//Rearrange the list of orders if the sorting mode is not the default
+		if (sortModeBox.getSelectionModel().getSelectedIndex() == 1) {
+			OrderIO.getOrders().sort(new ReverseIDSort());
+		}
+		else if (sortModeBox.getSelectionModel().getSelectedIndex() == 2){
+			OrderIO.getOrders().sort(new CustomerSort());
+		}
+		//Fill the pane with the new orders
 		listView.getItems().addAll(OrderIO.getOrders());
 	}
 
