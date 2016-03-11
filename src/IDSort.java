@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public abstract class IDSort implements Comparator<Order> {
+public class IDSort implements Comparator<Order> {
 
 	@Override
 	public int compare(Order o1, Order o2) {
