@@ -79,6 +79,8 @@ public class WindowController {
 		editButton.setDisable(true);
 		deleteButton.setDisable(true);
 
+		listView.setDisable(true);
+
 		//Place the correct pane in infoPane
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -121,6 +123,7 @@ public class WindowController {
 	public void exitNewOrder() {
 		infoPane.getChildren().remove(0);
 		newButton.setDisable(false);
+		listView.setDisable(false);
 		refreshList();
 	}
 }
