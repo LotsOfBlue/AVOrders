@@ -14,16 +14,10 @@ public class DisplayOrderController {
 
 	public void populateLabels(Order order) {
 		nameLabel.setText(order.getName());
-		if(order.getPhoneNo() != null) {
-			phoneNoLabel.setText("" + order.getPhoneNo());
-		}
+		phoneNoLabel.setText(order.getPhoneNo());
 		itemLabel.setText(order.getItem());
-		if(order.getItemNo() != null) {
-			itemNoLabel.setText("" + order.getItemNo());
-		}
-		if(order.getPrice() != null) {
-			priceLabel.setText("" + order.getPrice());
-		}
+		itemNoLabel.setText(order.getItemNo());
+		priceLabel.setText(order.getPrice());
 		commentLabel.setText(order.getComment());
 		if(order.getOrderedDate() != null) {
 			orderedLabel.setText("" + order.getOrderedDate());

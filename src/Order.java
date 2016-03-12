@@ -7,10 +7,10 @@ public class Order implements Serializable{
 
 	private final int id;
 	private String name;
-	private Integer phoneNo;
+	private String phoneNo;
 	private String item;
-	private Integer itemNo;
-	private Integer price;
+	private String itemNo;
+	private String price;
 	private String comment;
 	private final LocalDate creationDate;
 	private LocalDate orderedDate;
@@ -19,7 +19,7 @@ public class Order implements Serializable{
 
 	private static List<Order> allOrders = new ArrayList<>();
 
-	public Order(int id, String name, Integer phoneNo, String item, Integer itemNo, Integer price, String comment) {
+	public Order(int id, String name, String phoneNo, String item, String itemNo, String price, String comment) {
 		//TODO
 		this.id = id;
 		//Set parameters from user input
@@ -48,11 +48,11 @@ public class Order implements Serializable{
 		this.name = name;
 	}
 
-	public Integer getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
@@ -64,19 +64,19 @@ public class Order implements Serializable{
 		this.item = item;
 	}
 
-	public Integer getItemNo() {
+	public String getItemNo() {
 		return itemNo;
 	}
 
-	public void setItemNo(int itemNo) {
+	public void setItemNo(String itemNo) {
 		this.itemNo = itemNo;
 	}
 
-	public Integer getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

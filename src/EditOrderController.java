@@ -13,10 +13,10 @@ public class EditOrderController {
 
 	public void populateFields(Order order) {
 		nameField.setText(order.getName());
-		phoneNoField.setText("" + order.getPhoneNo());
+		phoneNoField.setText(order.getPhoneNo());
 		itemField.setText(order.getItem());
-		itemNoField.setText("" + order.getItemNo());
-		priceField.setText("" + order.getPrice());
+		itemNoField.setText(order.getItemNo());
+		priceField.setText(order.getPrice());
 		commentField.setText(order.getComment());
 	}
 

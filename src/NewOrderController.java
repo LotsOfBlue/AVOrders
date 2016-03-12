@@ -31,25 +31,27 @@ public class NewOrderController {
 		//Get the customer name from the text field
 		String name = nameField.getText().trim();
 		if(name.equals("")) {
+			nameField.clear();
 			nameField.setPromptText("Du måste ange ett namn.");
 			clearToContinue = false;
 		}
 
 		//Get the phone number from the text field
-		Integer phoneNo = checkNumberField(phoneNoField);
+		String phoneNo = checkNumberField(phoneNoField);
 
 		//Get the item name from the text field
 		String item = itemField.getText().trim();
 		if(item.equals("")) {
+			itemField.clear();
 			itemField.setPromptText("Du måste ange en vara.");
 			clearToContinue = false;
 		}
 
 		//Get the item's number from the text field
-		Integer itemNo = checkNumberField(itemNoField);
+		String itemNo = checkNumberField(itemNoField);
 
 		//Get the item's price from the text field
-		Integer price = checkNumberField(priceField);
+		String price = checkNumberField(priceField);
 
 		//If any field contains prompt text, the order can't be created
 		for (int i = 0; i < allFields.length - 1; i++) {
@@ -71,22 +73,18 @@ public class NewOrderController {
 	/**
 	 * Checks if the textfield contains a number,
 	 * and displays a prompt in it if it doesn't.
-	 * @param field The textfiled to check
-	 * @return null if the field is empty or contains letters,
-	 * or an integer if it contains a number
+	 * @param field The textfield to check
+	 * @return The trimmed contents of the field
 	 */
-	private Integer checkNumberField(TextField field) {
-		Integer result = null;
-		if(!field.getText().trim().equals(""))
-			try {
-				result = Integer.parseInt(field.getText().trim());
-			}
-			catch (NumberFormatException e) {
+	private String checkNumberField(TextField field) {
+		String contents = field.getText().trim();
+		for (char c : contents.toCharArray()) {
+			if (!Character.isDigit(c)) {
 				field.clear();
 				field.setPromptText("Endast siffror (0-9) tillåtna.");
 			}
-
-		return result;
+		}
+		return contents;
 	}
 
 	public void cancel(ActionEvent event) {
