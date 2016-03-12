@@ -76,47 +76,47 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label text="Label" GridPane.columnIndex="1">
+            <Label fx:id="nameLabel" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="10.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="phoneNoLabel" layoutX="207.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="43.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="itemLabel" layoutX="207.0" layoutY="43.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="76.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="itemNoLabel" layoutX="207.0" layoutY="76.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="109.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="priceLabel" layoutX="207.0" layoutY="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="commentLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="175.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="orderedLabel" layoutX="207.0" layoutY="175.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="253.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="contactedLabel" layoutX="207.0" layoutY="253.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="207.0" layoutY="286.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="deliveredLabel" layoutX="207.0" layoutY="286.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

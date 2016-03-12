@@ -74,6 +74,11 @@ public class WindowController {
 		//TODO
 		System.out.println("Ny beställning!");
 
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+
 		//Disable the buttons
 		newButton.setDisable(true);
 		editButton.setDisable(true);
@@ -106,6 +111,11 @@ public class WindowController {
 		//TODO
 		System.out.println("Redigerar beställning!");
 
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			AnchorPane editOrderPane = loader.load(getClass().getResource("editOrder.fxml").openStream());
@@ -126,6 +136,7 @@ public class WindowController {
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
 		}
+
 		if (listView.getSelectionModel().getSelectedItem() != null) {
 			try {
 				FXMLLoader loader = new FXMLLoader();
@@ -133,6 +144,11 @@ public class WindowController {
 				displayOrderPane.setPrefWidth(infoPane.getWidth());
 				displayOrderPane.setPrefHeight(infoPane.getHeight());
 				infoPane.getChildren().add(displayOrderPane);
+				Order selectedOrder = (Order) listView.getSelectionModel().getSelectedItem();
+
+				//Display the order's info
+				DisplayOrderController controller = loader.getController();
+				controller.populateLabels(selectedOrder);
 
 				editButton.setDisable(false);
 			}
