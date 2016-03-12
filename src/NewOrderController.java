@@ -60,13 +60,9 @@ public class NewOrderController {
 
 		//If everything's alright, create the order and exit the pane
 		if(clearToContinue) {
-			createOrder(
-					name,
-					phoneNo,
-					item,
-					itemNo,
-					price,
-					commentField.getText().trim());
+			new Order(0, name, phoneNo, item, itemNo, price, commentField.getText().trim());
+			//TODO
+			//System.out.println(OrderIO.getOrders());
 
 			Main.mainWindowController.exitNewOrder();
 		}
@@ -91,27 +87,6 @@ public class NewOrderController {
 			}
 
 		return result;
-	}
-
-	/**
-	 * Creates a new Order object with the given parameters
-	 * @param name
-	 * @param phoneNo
-	 * @param item
-	 * @param itemNo
-	 * @param price
-	 * @param comment
-	 */
-	private void createOrder(
-			String name,
-			Integer phoneNo,
-			String item,
-			Integer itemNo,
-			Integer price,
-			String comment) {
-		new Order(0, name, phoneNo, item, itemNo, price, comment);
-		//TODO
-		//System.out.println(OrderIO.getOrders());
 	}
 
 	public void cancel(ActionEvent event) {
