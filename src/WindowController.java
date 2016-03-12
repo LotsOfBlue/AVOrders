@@ -19,6 +19,8 @@ public class WindowController {
 
 	private Comparator[] comparators;
 
+	private Order lastSelected;
+
 	@FXML
 	/**
 	 * Set the window to its initial state
@@ -104,6 +106,14 @@ public class WindowController {
 	}
 
 	/**
+	 * Store the Order that was last clicked
+	 */
+	public void getSelectedOrder() {
+		lastSelected = (Order) listView.getSelectionModel().getSelectedItem();
+		displayOrder();
+	}
+
+	/**
 	 * Prepare the window for editing an order
 	 * @param event
 	 */
@@ -122,17 +132,19 @@ public class WindowController {
 			editOrderPane.setPrefWidth(infoPane.getWidth());
 			editOrderPane.setPrefHeight(infoPane.getHeight());
 			infoPane.getChildren().add(editOrderPane);
-			Order selectedOrder = (Order) listView.getSelectionModel().getSelectedItem();
 
 			//Display the order's info
 			EditOrderController controller = loader.getController();
-			controller.populateFields(selectedOrder);
+			controller.populateFields(lastSelected);
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda editOrder.fxml");
 		}
 	}
 
+	/**
+	 * Prepare the window for displaying the last selected order
+	 */
 	public void displayOrder() {
 		//TODO
 		System.out.println("Visar beställning!");
@@ -142,18 +154,17 @@ public class WindowController {
 			infoPane.getChildren().remove(0);
 		}
 
-		if (listView.getSelectionModel().getSelectedItem() != null) {
+		if (lastSelected != null) {
 			try {
 				FXMLLoader loader = new FXMLLoader();
 				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
 				displayOrderPane.setPrefWidth(infoPane.getWidth());
 				displayOrderPane.setPrefHeight(infoPane.getHeight());
 				infoPane.getChildren().add(displayOrderPane);
-				Order selectedOrder = (Order) listView.getSelectionModel().getSelectedItem();
 
 				//Display the order's info
 				DisplayOrderController controller = loader.getController();
-				controller.populateLabels(selectedOrder);
+				controller.populateLabels(lastSelected);
 
 				editButton.setDisable(false);
 			}
@@ -181,5 +192,17 @@ public class WindowController {
 		newButton.setDisable(false);
 		listView.setDisable(false);
 		refreshList();
+	}
+
+	/**
+	 * Cancel/finish editing an order,
+	 * reset buttons to default and display the order again
+	 */
+	public void exitEditOrder() {
+		infoPane.getChildren().remove(0);
+		newButton.setDisable(false);
+		listView.setDisable(false);
+		refreshList();
+		displayOrder();
 	}
 }

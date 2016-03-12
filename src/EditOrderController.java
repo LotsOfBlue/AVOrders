@@ -11,7 +11,10 @@ public class EditOrderController {
 	public TextField priceField;
 	public TextArea commentField;
 
+	private Order order;
+
 	public void populateFields(Order order) {
+		this.order = order;
 		nameField.setText(order.getName());
 		phoneNoField.setText(order.getPhoneNo());
 		itemField.setText(order.getItem());
@@ -20,11 +23,21 @@ public class EditOrderController {
 		commentField.setText(order.getComment());
 	}
 
-	public void finishCreate(ActionEvent event) {
+	public void finishEdit(ActionEvent event) {
+		order.setName(nameField.getText());
+		order.setPhoneNo(phoneNoField.getText());
+		order.setItem(itemField.getText());
+		order.setItemNo(itemNoField.getText());
+		order.setPrice(priceField.getText());
+		order.setComment(commentField.getText());
 
+		Main.mainWindowController.exitEditOrder();
 	}
 
 	public void cancel(ActionEvent event) {
+		//TODO
+		System.out.println("Avbröt...");
 
+		Main.mainWindowController.exitEditOrder();
 	}
 }

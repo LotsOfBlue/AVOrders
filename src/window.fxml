@@ -19,7 +19,7 @@
             </AnchorPane>
          <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="50.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
             <content>
-               <ListView fx:id="listView" onMouseClicked="#displayOrder" prefHeight="200.0" prefWidth="200.0" />
+               <ListView fx:id="listView" onMouseClicked="#getSelectedOrder" prefHeight="200.0" prefWidth="200.0" />
             </content>
          </ScrollPane>
         </AnchorPane>
