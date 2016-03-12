@@ -105,6 +105,41 @@ public class WindowController {
 	public void editOrder(ActionEvent event) {
 		//TODO
 		System.out.println("Redigerar beställning!");
+
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			AnchorPane editOrderPane = loader.load(getClass().getResource("editOrder.fxml").openStream());
+			editOrderPane.setPrefWidth(infoPane.getWidth());
+			editOrderPane.setPrefHeight(infoPane.getHeight());
+			infoPane.getChildren().add(editOrderPane);
+		}
+		catch (IOException e) {
+			System.out.println("Kunde inte ladda editOrder.fxml");
+		}
+	}
+
+	public void displayOrder() {
+		//TODO
+		System.out.println("Visar beställning!");
+
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+		if (listView.getSelectionModel().getSelectedItem() != null) {
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
+				displayOrderPane.setPrefWidth(infoPane.getWidth());
+				displayOrderPane.setPrefHeight(infoPane.getHeight());
+				infoPane.getChildren().add(displayOrderPane);
+
+				editButton.setDisable(false);
+			}
+			catch (IOException e) {
+				System.out.println("Kunde inte ladda displayOrder.fxml");
+			}
+		}
 	}
 
 	/**
