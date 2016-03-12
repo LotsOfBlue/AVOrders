@@ -122,6 +122,11 @@ public class WindowController {
 			editOrderPane.setPrefWidth(infoPane.getWidth());
 			editOrderPane.setPrefHeight(infoPane.getHeight());
 			infoPane.getChildren().add(editOrderPane);
+			Order selectedOrder = (Order) listView.getSelectionModel().getSelectedItem();
+
+			//Display the order's info
+			EditOrderController controller = loader.getController();
+			controller.populateFields(selectedOrder);
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda editOrder.fxml");
