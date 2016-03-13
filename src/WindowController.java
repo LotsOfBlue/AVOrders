@@ -87,6 +87,7 @@ public class WindowController {
 		deleteButton.setDisable(true);
 
 		listView.setDisable(true);
+		sortModeBox.setDisable(true);
 
 		//Place the correct pane in infoPane
 		try {
@@ -167,6 +168,7 @@ public class WindowController {
 				controller.populateLabels(lastSelected);
 
 				editButton.setDisable(false);
+				deleteButton.setDisable(false);
 			}
 			catch (IOException e) {
 				System.out.println("Kunde inte ladda displayOrder.fxml");
@@ -175,12 +177,20 @@ public class WindowController {
 	}
 
 	/**
-	 * Delete the current order
+	 * TODO
 	 * @param event
 	 */
 	public void deleteOrder(ActionEvent event) {
 		//TODO
 		System.out.println("Tar bort beställning!");
+
+		OrderUtils.getOrders().remove(lastSelected);
+		listView.getItems().remove(lastSelected);
+
+		infoPane.getChildren().remove(0);
+		deleteButton.setDisable(true);
+		editButton.setDisable(true);
+		refreshList();
 	}
 
 	/**
@@ -191,6 +201,7 @@ public class WindowController {
 		infoPane.getChildren().remove(0);
 		newButton.setDisable(false);
 		listView.setDisable(false);
+		sortModeBox.setDisable(false);
 		refreshList();
 	}
 
