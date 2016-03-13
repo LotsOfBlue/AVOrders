@@ -64,7 +64,7 @@ public class NewOrderController {
 		if(clearToContinue) {
 			new Order(0, name, phoneNo, item, itemNo, price, commentField.getText().trim());
 			//TODO
-			//System.out.println(OrderIO.getOrders());
+			//System.out.println(OrderUtils.getOrders());
 
 			Main.mainWindowController.exitNewOrder();
 		}

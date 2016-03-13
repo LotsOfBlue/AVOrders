@@ -54,18 +54,18 @@ public class WindowController {
 	 */
 	private void refreshList() {
 		//Sorts in the regular way before saving
-		OrderIO.getOrders().sort(new IDSort());
-		OrderIO.saveToFile();
+		OrderUtils.getOrders().sort(new IDSort());
+		OrderUtils.saveToFile();
 
 		//Empty the pane
-		listView.getItems().removeAll(OrderIO.getOrders());
+		listView.getItems().removeAll(OrderUtils.getOrders());
 
 		//Rearrange the list of orders if the sorting mode is not the default
 		int i = sortModeBox.getSelectionModel().getSelectedIndex();
-		OrderIO.getOrders().sort(comparators[i]);
+		OrderUtils.getOrders().sort(comparators[i]);
 
 		//Fill the pane with the new orders
-		listView.getItems().addAll(OrderIO.getOrders());
+		listView.getItems().addAll(OrderUtils.getOrders());
 	}
 
 	/**

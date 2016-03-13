@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class OrderIO {
+public abstract class OrderUtils {
 
     private static File savedOrders = new File("src/SavedOrders");
 
@@ -31,7 +31,7 @@ public abstract class OrderIO {
         //TODO
         try {
             //Create the file if it doesn't exist
-            savedOrders = new File(OrderIO.class.getResource("SavedOrders").toURI());
+            savedOrders = new File(OrderUtils.class.getResource("SavedOrders").toURI());
             savedOrders.createNewFile();
 
             //Read from the file and retrieve the Orders from it
