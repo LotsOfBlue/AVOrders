@@ -29,29 +29,19 @@ public class NewOrderController {
 		Boolean clearToContinue = true;
 
 		//Get the customer name from the text field
-		String name = nameField.getText().trim();
-		if(name.equals("")) {
-			nameField.clear();
-			nameField.setPromptText("Du måste ange ett namn.");
-			clearToContinue = false;
-		}
+		String name = OrderUtils.checkMandatoryField(nameField, "Du måste ange ett namn.");
 
 		//Get the phone number from the text field
-		String phoneNo = checkNumberField(phoneNoField);
+		String phoneNo = OrderUtils.checkNumberField(phoneNoField);
 
 		//Get the item name from the text field
-		String item = itemField.getText().trim();
-		if(item.equals("")) {
-			itemField.clear();
-			itemField.setPromptText("Du måste ange en vara.");
-			clearToContinue = false;
-		}
+		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
 
 		//Get the item's number from the text field
-		String itemNo = checkNumberField(itemNoField);
+		String itemNo = OrderUtils.checkNumberField(itemNoField);
 
 		//Get the item's price from the text field
-		String price = checkNumberField(priceField);
+		String price = OrderUtils.checkNumberField(priceField);
 
 		//If any field contains prompt text, the order can't be created
 		for (int i = 0; i < allFields.length - 1; i++) {
@@ -68,23 +58,6 @@ public class NewOrderController {
 
 			Main.mainWindowController.exitNewOrder();
 		}
-	}
-
-	/**
-	 * Checks if the textfield contains a number,
-	 * and displays a prompt in it if it doesn't.
-	 * @param field The textfield to check
-	 * @return The trimmed contents of the field
-	 */
-	private String checkNumberField(TextField field) {
-		String contents = field.getText().trim();
-		for (char c : contents.toCharArray()) {
-			if (!Character.isDigit(c)) {
-				field.clear();
-				field.setPromptText("Endast siffror (0-9) tillåtna.");
-			}
-		}
-		return contents;
 	}
 
 	public void cancel(ActionEvent event) {

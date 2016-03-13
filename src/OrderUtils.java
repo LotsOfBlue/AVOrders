@@ -1,3 +1,5 @@
+import javafx.scene.control.TextField;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,40 @@ public abstract class OrderUtils {
      */
     public static List<Order> getOrders() {
         return orderList;
+    }
+
+	/**
+     * Checks if a mandatory text field contains any text.
+     * Displays an error message in the field if it's empty or just contains whitespace
+     * @param field The textfield to check
+     * @param errorMsg The message to display if the field is empty
+     * @return The trimmed contents of the field
+     */
+    public static String checkMandatoryField(TextField field, String errorMsg) {
+        //Get the customer name from the text field
+        String contents = field.getText().trim();
+        if(contents.equals("")) {
+            field.clear();
+            field.setPromptText(errorMsg);
+        }
+        return contents;
+    }
+
+    /**
+     * Checks if the textfield contains a number,
+     * and displays an error message in it if it doesn't.
+     * @param field The textfield to check
+     * @return The trimmed contents of the field
+     */
+    public static String checkNumberField(TextField field) {
+        String contents = field.getText().trim();
+        for (char c : contents.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                field.clear();
+                field.setPromptText("Endast siffror (0-9) tillåtna.");
+            }
+        }
+        return contents;
     }
 
     /**
