@@ -86,9 +86,9 @@
             <TextField fx:id="itemNoField" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="priceField" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextArea fx:id="commentField" prefHeight="70.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <CheckBox layoutX="207.0" layoutY="253.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <CheckBox layoutX="207.0" layoutY="286.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <CheckBox fx:id="orderedBox" mnemonicParsing="false" onAction="#addCurrentDate" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <CheckBox fx:id="contactedBox" layoutX="207.0" layoutY="253.0" mnemonicParsing="false" onAction="#addCurrentDate" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <CheckBox fx:id="deliveredBox" layoutX="207.0" layoutY="286.0" mnemonicParsing="false" onAction="#addCurrentDate" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
       <Button fx:id="saveButton" layoutX="479.0" layoutY="656.0" mnemonicParsing="false" onAction="#finishEdit" text="Spara" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="35.0">

@@ -12,6 +12,10 @@ public class DisplayOrderController {
 	public Label contactedLabel;
 	public Label deliveredLabel;
 
+	/**
+	 * todo
+	 * @param order
+	 */
 	public void populateLabels(Order order) {
 		nameLabel.setText(order.getName());
 		phoneNoLabel.setText(order.getPhoneNo());
@@ -20,13 +24,13 @@ public class DisplayOrderController {
 		priceLabel.setText(order.getPrice());
 		commentLabel.setText(order.getComment());
 		if(order.getOrderedDate() != null) {
-			orderedLabel.setText("" + order.getOrderedDate());
+			orderedLabel.setText(order.getOrderedDate().toString());
 		}
-		if(order.getReceivedDate() != null) {
-			contactedLabel.setText("" + order.getReceivedDate());
+		if(order.getContactedDate() != null) {
+			contactedLabel.setText(order.getContactedDate().toString());
 		}
 		if(order.getDeliveredDate() != null) {
-			deliveredLabel.setText("" + order.getDeliveredDate());
+			deliveredLabel.setText(order.getDeliveredDate().toString());
 		}
 	}
 }

@@ -14,7 +14,7 @@ public class Order implements Serializable{
 	private String comment;
 	private final LocalDate creationDate;
 	private LocalDate orderedDate;
-	private LocalDate receivedDate;
+	private LocalDate contactedDate;
 	private LocalDate deliveredDate;
 
 	private static List<Order> allOrders = new ArrayList<>();
@@ -100,12 +100,12 @@ public class Order implements Serializable{
 		this.orderedDate = orderedDate;
 	}
 
-	public LocalDate getReceivedDate() {
-		return receivedDate;
+	public LocalDate getContactedDate() {
+		return contactedDate;
 	}
 
-	public void setReceivedDate(LocalDate receivedDate) {
-		this.receivedDate = receivedDate;
+	public void setContactedDate(LocalDate contactedDate) {
+		this.contactedDate = contactedDate;
 	}
 
 	public LocalDate getDeliveredDate() {
