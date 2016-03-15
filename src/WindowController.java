@@ -14,7 +14,7 @@ public class WindowController {
 	public Button editButton;
 	public Button deleteButton;
 	public AnchorPane infoPane;
-	public ChoiceBox sortModeBox;
+	public ChoiceBox<String> sortModeBox;
 	public ListView listView;
 
 	private Comparator[] comparators;
@@ -32,8 +32,14 @@ public class WindowController {
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
 
+		//Add strings representing the sorting modes to the choice box
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
 		sortModeBox.setValue(sortModeBox.getItems().get(0));
+
+		//Call refreshList() when a new sorting mode is selected
+		sortModeBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+			refreshList();
+		});
 
 		//Store all available comparators for easy access
 		comparators = new Comparator[sortModeBox.getItems().size()];
