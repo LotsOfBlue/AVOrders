@@ -37,9 +37,6 @@ public class NewOrderController {
 		//Get the item name from the text field
 		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
 
-		//Get the item's number from the text field
-		String itemNo = OrderUtils.checkNumberField(itemNoField);
-
 		//Get the item's price from the text field
 		String price = OrderUtils.checkNumberField(priceField);
 
@@ -52,7 +49,7 @@ public class NewOrderController {
 
 		//If everything's alright, create the order and exit the pane
 		if(clearToContinue) {
-			new Order(0, name, phoneNo, item, itemNo, price, commentField.getText().trim());
+			new Order(0, name, phoneNo, item, itemNoField.getText().trim(), price, commentField.getText().trim());
 			//TODO
 			//System.out.println(OrderUtils.getOrders());
 

@@ -77,9 +77,6 @@ public class EditOrderController {
 		//Get the item name from the text field
 		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
 
-		//Get the item's number from the text field
-		String itemNo = OrderUtils.checkNumberField(itemNoField);
-
 		//Get the item's price from the text field
 		String price = OrderUtils.checkNumberField(priceField);
 
@@ -95,23 +92,23 @@ public class EditOrderController {
 			order.setName(name);
 			order.setPhoneNo(phoneNo);
 			order.setItem(item);
-			order.setItemNo(itemNo);
+			order.setItemNo(itemNoField.getText().trim());
 			order.setPrice(price);
 			order.setComment(commentField.getText().trim());
 
-			if(orderedBox.getText() != "") {
+			if(!orderedBox.getText().equals("")) {
 				order.setOrderedDate(LocalDate.parse(orderedBox.getText()));
 			}
 			else {
 				order.setOrderedDate(null);
 			}
-			if(contactedBox.getText() != "") {
+			if(!contactedBox.getText().equals("")) {
 				order.setContactedDate(LocalDate.parse(contactedBox.getText()));
 			}
 			else {
 				order.setContactedDate(null);
 			}
-			if(deliveredBox.getText() != "") {
+			if(!deliveredBox.getText().equals("")) {
 				order.setDeliveredDate(LocalDate.parse(deliveredBox.getText()));
 			}
 			else {
