@@ -127,6 +127,10 @@ public class WindowController {
 			infoPane.getChildren().remove(0);
 		}
 
+		//Disable buttons
+		deleteButton.setDisable(true);
+		editButton.setDisable(true);
+
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			AnchorPane editOrderPane = loader.load(getClass().getResource("editOrder.fxml").openStream());
@@ -155,6 +159,10 @@ public class WindowController {
 			infoPane.getChildren().remove(0);
 		}
 
+		//Enable the edit and delete buttons
+		editButton.setDisable(false);
+		deleteButton.setDisable(false);
+
 		if (lastSelected != null) {
 			try {
 				FXMLLoader loader = new FXMLLoader();
@@ -167,8 +175,6 @@ public class WindowController {
 				DisplayOrderController controller = loader.getController();
 				controller.populateLabels(lastSelected);
 
-				editButton.setDisable(false);
-				deleteButton.setDisable(false);
 			}
 			catch (IOException e) {
 				System.out.println("Kunde inte ladda displayOrder.fxml");
