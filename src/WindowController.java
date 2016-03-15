@@ -69,6 +69,49 @@ public class WindowController {
 	}
 
 	/**
+	 * Store the Order that was last clicked, and display it
+	 */
+	public void getSelectedOrder() {
+		lastSelected = (Order) listView.getSelectionModel().getSelectedItem();
+		displayOrder();
+	}
+
+	/**
+	 * Prepare the window for displaying the last selected order
+	 */
+	public void displayOrder() {
+		//TODO
+		System.out.println("Visar beställning!");
+
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+
+		//Enable the edit and delete buttons
+		editButton.setDisable(false);
+		deleteButton.setDisable(false);
+
+		if (lastSelected != null) {
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
+				displayOrderPane.setPrefWidth(infoPane.getWidth());
+				displayOrderPane.setPrefHeight(infoPane.getHeight());
+				infoPane.getChildren().add(displayOrderPane);
+
+				//Display the order's info
+				DisplayOrderController controller = loader.getController();
+				controller.populateLabels(lastSelected);
+
+			}
+			catch (IOException e) {
+				System.out.println("Kunde inte ladda displayOrder.fxml");
+			}
+		}
+	}
+
+	/**
 	 * Prepare the window for creating a new order
 	 * @param event
 	 */
@@ -107,14 +150,6 @@ public class WindowController {
 	}
 
 	/**
-	 * Store the Order that was last clicked
-	 */
-	public void getSelectedOrder() {
-		lastSelected = (Order) listView.getSelectionModel().getSelectedItem();
-		displayOrder();
-	}
-
-	/**
 	 * Prepare the window for editing an order
 	 * @param event
 	 */
@@ -126,6 +161,10 @@ public class WindowController {
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
 		}
+
+		//Disable buttons
+		deleteButton.setDisable(true);
+		editButton.setDisable(true);
 
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -140,39 +179,6 @@ public class WindowController {
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda editOrder.fxml");
-		}
-	}
-
-	/**
-	 * Prepare the window for displaying the last selected order
-	 */
-	public void displayOrder() {
-		//TODO
-		System.out.println("Visar beställning!");
-
-		//Remove anything currently in infoPane
-		while (infoPane.getChildren().size() > 0) {
-			infoPane.getChildren().remove(0);
-		}
-
-		if (lastSelected != null) {
-			try {
-				FXMLLoader loader = new FXMLLoader();
-				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
-				displayOrderPane.setPrefWidth(infoPane.getWidth());
-				displayOrderPane.setPrefHeight(infoPane.getHeight());
-				infoPane.getChildren().add(displayOrderPane);
-
-				//Display the order's info
-				DisplayOrderController controller = loader.getController();
-				controller.populateLabels(lastSelected);
-
-				editButton.setDisable(false);
-				deleteButton.setDisable(false);
-			}
-			catch (IOException e) {
-				System.out.println("Kunde inte ladda displayOrder.fxml");
-			}
 		}
 	}
 
