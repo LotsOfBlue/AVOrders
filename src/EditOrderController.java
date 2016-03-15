@@ -1,5 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -16,6 +17,7 @@ public class EditOrderController {
 	public CheckBox orderedBox;
 	public CheckBox contactedBox;
 	public CheckBox deliveredBox;
+	public Label idLabel;
 
 	private Order order;
 
@@ -25,6 +27,9 @@ public class EditOrderController {
 	 */
 	public void populateFields(Order order) {
 		this.order = order;
+
+		idLabel.setText("Beställning nr. " + order.getId() + " (" + order.getCreationDate() + ")");
+
 		nameField.setText(order.getName());
 		phoneNoField.setText(order.getPhoneNo());
 		itemField.setText(order.getItem());

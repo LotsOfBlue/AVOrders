@@ -11,12 +11,15 @@ public class DisplayOrderController {
 	public Label orderedLabel;
 	public Label contactedLabel;
 	public Label deliveredLabel;
+	public Label idLabel;
 
 	/**
 	 * todo
 	 * @param order
 	 */
 	public void populateLabels(Order order) {
+		idLabel.setText("Beställning nr. " + order.getId() + " (" + order.getCreationDate() + ")");
+
 		nameLabel.setText(order.getName());
 		phoneNoLabel.setText(order.getPhoneNo());
 		itemLabel.setText(order.getItem());
