@@ -8,7 +8,23 @@ public abstract class OrderUtils {
 
     private static File savedOrders = new File("src/SavedOrders");
 
+    private static Integer latestOrder = 1;
     private static List<Order> orderList = new ArrayList<>();
+
+	/**
+     * Get the ID number of the next order.
+     * @return The ID the next order will have
+     */
+    public static Integer getLatestOrder() {
+        return latestOrder;
+    }
+
+	/**
+     * Increment the ID number.
+     */
+    public static void incrementOrder() {
+        latestOrder++;
+    }
 
     /**
      * Adds an order to the list of orders.
@@ -61,7 +77,7 @@ public abstract class OrderUtils {
     }
 
     /**
-     * todo
+     * Load the ID number and list of orders from the file.
      */
     public static void loadFromFile() {
         //TODO
@@ -70,10 +86,11 @@ public abstract class OrderUtils {
             savedOrders = new File(OrderUtils.class.getResource("SavedOrders").toURI());
             savedOrders.createNewFile();
 
-            //Read from the file and retrieve the Orders from it
+            //Read the file and retrieve the Orders and ID of the latest order from it
             ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(savedOrders));
-
             orderList = (ArrayList<Order>)objectIn.readObject();
+            latestOrder = (Integer)objectIn.readObject();
+            objectIn.close();
         } catch (EOFException e) {
             System.out.println("Läst färdigt filen.");
         }
@@ -86,7 +103,7 @@ public abstract class OrderUtils {
     }
 
     /**
-     * todo
+     * Save the ID number and list of orders to the file.
      */
     public static void saveToFile() {
         //TODO
@@ -94,6 +111,7 @@ public abstract class OrderUtils {
         try {
             ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders));
             objectOut.writeObject(orderList);
+            objectOut.writeObject(latestOrder);
             objectOut.close();
         } catch (IOException e) {
             System.out.println("Fel med IO i outputstream.");

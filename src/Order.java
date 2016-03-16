@@ -19,9 +19,10 @@ public class Order implements Serializable{
 
 	private static List<Order> allOrders = new ArrayList<>();
 
-	public Order(int id, String name, String phoneNo, String item, String itemNo, String price, String comment) {
-		//TODO
-		this.id = id;
+	public Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
+		//Assign ID to the order, and increment the ID for the next order
+		this.id = OrderUtils.getLatestOrder();
+		OrderUtils.incrementOrder();
 		//Set parameters from user input
 		this.name = name;
 		this.phoneNo = phoneNo;
@@ -29,10 +30,10 @@ public class Order implements Serializable{
 		this.itemNo = itemNo;
 		this.price = price;
 		this.comment = comment;
-		//Set creation date
+		//Set creation date based on the current date
 		this.creationDate = LocalDate.now();
 
-		//allOrders.add(this);
+		//Add this order to the list of all orders
 		OrderUtils.addOrder(this);
 	}
 

@@ -47,10 +47,6 @@ public class WindowController {
 		comparators[1] = new ReverseIDSort();
 		comparators[2] = new CustomerSort();
 
-		/*for (int i = 0; i < 100; i++) {
-			new Order(i, "Kundnamn", 123456789, "Vara", 1234, 100, "");
-		}*/
-
 		refreshList();
 	}
 

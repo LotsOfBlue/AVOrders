@@ -49,9 +49,7 @@ public class NewOrderController {
 
 		//If everything's alright, create the order and exit the pane
 		if(clearToContinue) {
-			new Order(0, name, phoneNo, item, itemNoField.getText().trim(), price, commentField.getText().trim());
-			//TODO
-			//System.out.println(OrderUtils.getOrders());
+			new Order(name, phoneNo, item, itemNoField.getText().trim(), price, commentField.getText().trim());
 
 			Main.mainWindowController.exitNewOrder();
 		}
