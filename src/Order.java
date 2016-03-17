@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order implements Serializable{
+class Order implements Serializable{
 
 	private final int id;
 	private String name;
