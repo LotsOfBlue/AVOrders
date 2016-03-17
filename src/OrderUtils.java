@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class OrderUtils {
+abstract class OrderUtils {
 
     private static File savedOrders = new File("src/SavedOrders");
 
@@ -15,14 +15,14 @@ public abstract class OrderUtils {
      * Get the ID number of the next order.
      * @return The ID the next order will have
      */
-    public static Integer getLatestOrder() {
+    static Integer getLatestOrder() {
         return latestOrder;
     }
 
 	/**
      * Increment the ID number.
      */
-    public static void incrementOrder() {
+    static void incrementOrder() {
         latestOrder++;
     }
 
@@ -30,7 +30,7 @@ public abstract class OrderUtils {
      * Adds an order to the list of orders.
      * @param order Order to add
      */
-    public static void addOrder(Order order) {
+    static void addOrder(Order order) {
         orderList.add(order);
     }
 
@@ -38,7 +38,7 @@ public abstract class OrderUtils {
      * Get the list of orders
      * @return The list of all orders
      */
-    public static List<Order> getOrders() {
+    static List<Order> getOrders() {
         return orderList;
     }
 
@@ -49,7 +49,7 @@ public abstract class OrderUtils {
      * @param errorMsg The message to display if the field is empty
      * @return The trimmed contents of the field
      */
-    public static String checkMandatoryField(TextField field, String errorMsg) {
+    static String checkMandatoryField(TextField field, String errorMsg) {
         //Get the customer name from the text field
         String contents = field.getText().trim();
         if(contents.equals("")) {
@@ -65,7 +65,7 @@ public abstract class OrderUtils {
      * @param field The textfield to check
      * @return The trimmed contents of the field
      */
-    public static String checkNumberField(TextField field) {
+    static String checkNumberField(TextField field) {
         String contents = field.getText().trim();
         for (char c : contents.toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -79,7 +79,7 @@ public abstract class OrderUtils {
     /**
      * Load the ID number and list of orders from the file.
      */
-    public static void loadFromFile() {
+    static void loadFromFile() {
         //TODO
         try {
             //Create the file if it doesn't exist
@@ -105,7 +105,7 @@ public abstract class OrderUtils {
     /**
      * Save the ID number and list of orders to the file.
      */
-    public static void saveToFile() {
+    static void saveToFile() {
         //TODO
         //Serializes the list of all orders to file
         try {
