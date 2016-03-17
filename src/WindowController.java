@@ -81,7 +81,7 @@ public class WindowController {
 	/**
 	 * Prepare the window for displaying the last selected order
 	 */
-	public void displayOrder() {
+	private void displayOrder() {
 		//TODO
 		System.out.println("Visar beställning!");
 
@@ -205,7 +205,7 @@ public class WindowController {
 	 * Cancel the creation of a new order,
 	 * and reset the buttons to their default
 	 */
-	public void exitNewOrder() {
+	void exitNewOrder() {
 		infoPane.getChildren().remove(0);
 		newButton.setDisable(false);
 		listView.setDisable(false);
@@ -217,7 +217,7 @@ public class WindowController {
 	 * Cancel/finish editing an order,
 	 * reset buttons to default and display the order again
 	 */
-	public void exitEditOrder() {
+	void exitEditOrder() {
 		infoPane.getChildren().remove(0);
 		newButton.setDisable(false);
 		listView.setDisable(false);

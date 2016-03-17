@@ -25,7 +25,7 @@ public class EditOrderController {
 	 * todo
 	 * @param order
 	 */
-	public void populateFields(Order order) {
+	void populateFields(Order order) {
 		this.order = order;
 
 		idLabel.setText("Beställning nr. " + order.getId() + " (" + order.getCreationDate() + ")");

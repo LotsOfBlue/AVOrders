@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order implements Serializable{
+class Order implements Serializable{
 
 	private final int id;
 	private String name;
@@ -17,9 +17,10 @@ public class Order implements Serializable{
 	private LocalDate contactedDate;
 	private LocalDate deliveredDate;
 
+	//TODO
 	private static List<Order> allOrders = new ArrayList<>();
 
-	public Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
+	Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
 		//Assign ID to the order, and increment the ID for the next order
 		this.id = OrderUtils.getLatestOrder();
 		OrderUtils.incrementOrder();
@@ -37,83 +38,83 @@ public class Order implements Serializable{
 		OrderUtils.addOrder(this);
 	}
 
-	public Integer getId() {
+	Integer getId() {
 		return id;
 	}
 
-	public String getName() {
+	String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 
-	public String getPhoneNo() {
+	String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(String phoneNo) {
+	void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
-	public String getItem() {
+	String getItem() {
 		return item;
 	}
 
-	public void setItem(String item) {
+	void setItem(String item) {
 		this.item = item;
 	}
 
-	public String getItemNo() {
+	String getItemNo() {
 		return itemNo;
 	}
 
-	public void setItemNo(String itemNo) {
+	void setItemNo(String itemNo) {
 		this.itemNo = itemNo;
 	}
 
-	public String getPrice() {
+	String getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	void setPrice(String price) {
 		this.price = price;
 	}
 
-	public String getComment() {
+	String getComment() {
 		return comment;
 	}
 
-	public void setComment(String comment) {
+	void setComment(String comment) {
 		this.comment = comment;
 	}
 
-	public LocalDate getCreationDate() {
+	LocalDate getCreationDate() {
 		return creationDate;
 	}
 
-	public LocalDate getOrderedDate() {
+	LocalDate getOrderedDate() {
 		return orderedDate;
 	}
 
-	public void setOrderedDate(LocalDate orderedDate) {
+	void setOrderedDate(LocalDate orderedDate) {
 		this.orderedDate = orderedDate;
 	}
 
-	public LocalDate getContactedDate() {
+	LocalDate getContactedDate() {
 		return contactedDate;
 	}
 
-	public void setContactedDate(LocalDate contactedDate) {
+	void setContactedDate(LocalDate contactedDate) {
 		this.contactedDate = contactedDate;
 	}
 
-	public LocalDate getDeliveredDate() {
+	LocalDate getDeliveredDate() {
 		return deliveredDate;
 	}
 
-	public void setDeliveredDate(LocalDate deliveredDate) {
+	void setDeliveredDate(LocalDate deliveredDate) {
 		this.deliveredDate = deliveredDate;
 	}
 

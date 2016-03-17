@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static WindowController mainWindowController;
+    static WindowController mainWindowController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{

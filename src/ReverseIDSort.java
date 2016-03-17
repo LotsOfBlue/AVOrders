@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class ReverseIDSort implements Comparator<Order> {
+class ReverseIDSort implements Comparator<Order> {
 
 	@Override
 	public int compare(Order o1, Order o2) {

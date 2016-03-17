@@ -17,7 +17,7 @@ public class DisplayOrderController {
 	 * todo
 	 * @param order
 	 */
-	public void populateLabels(Order order) {
+	void populateLabels(Order order) {
 		idLabel.setText("Beställning nr. " + order.getId() + " (" + order.getCreationDate() + ")");
 
 		nameLabel.setText(order.getName());
