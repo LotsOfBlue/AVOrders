@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TODO
+ */
 abstract class OrderUtils {
 
     private static File savedOrders = new File("src/SavedOrders");
@@ -88,8 +91,8 @@ abstract class OrderUtils {
 
             //Read the file and retrieve the Orders and ID of the latest order from it
             ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(savedOrders));
-            orderList = (ArrayList<Order>)objectIn.readObject();
             latestOrder = (Integer)objectIn.readObject();
+            orderList = (ArrayList<Order>)objectIn.readObject();
             objectIn.close();
         } catch (EOFException e) {
             System.out.println("Läst färdigt filen.");
@@ -110,8 +113,8 @@ abstract class OrderUtils {
         //Serializes the list of all orders to file
         try {
             ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders));
-            objectOut.writeObject(orderList);
             objectOut.writeObject(latestOrder);
+            objectOut.writeObject(orderList);
             objectOut.close();
         } catch (IOException e) {
             System.out.println("Fel med IO i outputstream.");
