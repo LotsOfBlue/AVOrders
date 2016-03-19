@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
@@ -23,7 +24,7 @@ public class WindowController {
 	public ChoiceBox<String> sortModeBox;
 	public ListView<Order> listView;
 
-	private Comparator[] comparators;
+	private ArrayList<Comparator<Order>> comparators = new ArrayList<>();
 
 	private Order lastSelected;
 
@@ -45,10 +46,9 @@ public class WindowController {
 		});
 
 		//Store all available comparators for easy access
-		comparators = new Comparator[sortModeBox.getItems().size()];
-		comparators[0] = new IDSort();
-		comparators[1] = new ReverseIDSort();
-		comparators[2] = new CustomerSort();
+		comparators.add(new IDSort());
+		comparators.add(new ReverseIDSort());
+		comparators.add(new CustomerSort());
 
 		refreshList();
 	}
@@ -67,7 +67,7 @@ public class WindowController {
 
 		//Rearrange the list of orders if the sorting mode is not the default
 		int i = sortModeBox.getSelectionModel().getSelectedIndex();
-		OrderUtils.getOrders().sort(comparators[i]);
+		OrderUtils.getOrders().sort(comparators.get(i));
 
 		//Fill the pane with the new orders
 		listView.getItems().addAll(OrderUtils.getOrders());
