@@ -1,9 +1,13 @@
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class NewOrderController {
+	public Label idLabel;
+
 	public TextField nameField;
 	public TextField phoneNoField;
 	public TextField itemField;
@@ -14,6 +18,18 @@ public class NewOrderController {
 	public Button createButton;
 	public Button cancelButton;
 
+	@FXML
+	/**
+	 * Display the ID the order will be given once created
+	 */
+	private void initialize() {
+		idLabel.setText(idLabel.getText() + OrderUtils.getLatestOrder());
+	}
+
+	/**
+	 * todo
+	 * @param event
+	 */
 	public void finishCreate(ActionEvent event) {
 		//TODO
 		System.out.println("Klar med nya ordern!");
