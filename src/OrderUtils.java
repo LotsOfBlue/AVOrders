@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO
+ * Contains methods for handling Orders and the editing of such, as well as related I/O.
+ * @author Johan Blomberg
  */
 abstract class OrderUtils {
 
@@ -27,7 +28,7 @@ abstract class OrderUtils {
 	/**
      * Increment the ID number.
      */
-    static void incrementOrder() {
+    static void incrementOrderID() {
         nextOrder++;
     }
 
@@ -40,7 +41,7 @@ abstract class OrderUtils {
     }
 
     /**
-     * Get the list of orders
+     * Get the list of orders.
      * @return The list of all orders
      */
     static List<Order> getOrders() {
