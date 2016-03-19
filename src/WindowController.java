@@ -90,25 +90,27 @@ public class WindowController {
 			infoPane.getChildren().remove(0);
 		}
 
-		//Enable the edit and delete buttons
-		editButton.setDisable(false);
-		deleteButton.setDisable(false);
+		if (lastSelected != null) {
+			//Enable the edit and delete buttons
+			editButton.setDisable(false);
+			deleteButton.setDisable(false);
 
-		//Place the correct pane in infoPane
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
-			displayOrderPane.setPrefWidth(infoPane.getWidth());
-			displayOrderPane.setPrefHeight(infoPane.getHeight());
-			infoPane.getChildren().add(displayOrderPane);
+			//Place the correct pane in infoPane
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
+				displayOrderPane.setPrefWidth(infoPane.getWidth());
+				displayOrderPane.setPrefHeight(infoPane.getHeight());
+				infoPane.getChildren().add(displayOrderPane);
 
-			//Display the order's info
-			DisplayOrderController controller = loader.getController();
-			controller.populateLabels(lastSelected);
-		}
-		catch (IOException e) {
-			System.out.println("Kunde inte ladda displayOrder.fxml");
-			e.printStackTrace();
+				//Display the order's info
+				DisplayOrderController controller = loader.getController();
+				controller.populateLabels(lastSelected);
+			}
+			catch (IOException e) {
+				System.out.println("Kunde inte ladda displayOrder.fxml");
+				e.printStackTrace();
+			}
 		}
 	}
 
