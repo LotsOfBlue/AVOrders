@@ -7,121 +7,132 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisplayOrderController">
-   <children>
-      <Label fx:id="idLabel" layoutX="14.0" layoutY="64.0" text="Beställning nr." AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
+            prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="DisplayOrderController">
+   <Label fx:id="idLabel" layoutX="14.0" layoutY="64.0" text="Beställning nr." AnchorPane.leftAnchor="20.0"
+          AnchorPane.topAnchor="55.0">
+      <font>
+         <Font name="System Bold" size="20.0"/>
+      </font>
+   </Label>
+   <GridPane hgap="8.0" prefHeight="478.0" prefWidth="550.0" vgap="8.0" AnchorPane.leftAnchor="0.0"
+             AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+      <columnConstraints>
+         <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0"
+                            prefWidth="200.0"/>
+         <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="363.0" minWidth="10.0"
+                            prefWidth="363.0"/>
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints fillHeight="false" maxHeight="205.0" minHeight="9.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="247.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="307.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="339.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="370.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="70.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+         <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="25.0" valignment="TOP"
+                         vgrow="NEVER"/>
+      </rowConstraints>
+      <Label text="Kundens namn:" GridPane.halignment="RIGHT">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="14.0"/>
          </font>
       </Label>
-      <GridPane hgap="8.0" prefHeight="478.0" prefWidth="550.0" vgap="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
-        <columnConstraints>
-          <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="200.0" />
-          <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="363.0" minWidth="10.0" prefWidth="363.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints fillHeight="false" maxHeight="205.0" minHeight="9.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-          <RowConstraints fillHeight="false" maxHeight="247.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-          <RowConstraints fillHeight="false" maxHeight="307.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-            <RowConstraints fillHeight="false" maxHeight="339.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-            <RowConstraints fillHeight="false" maxHeight="370.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-            <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="70.0" valignment="TOP" vgrow="NEVER" />
-            <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-            <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-            <RowConstraints fillHeight="false" maxHeight="407.0" minHeight="10.0" prefHeight="25.0" valignment="TOP" vgrow="NEVER" />
-        </rowConstraints>
-         <children>
-            <Label text="Kundens namn:" GridPane.halignment="RIGHT">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Telefonnummer:" GridPane.rowIndex="1">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Vara:" GridPane.rowIndex="2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Artikelnummer:" GridPane.rowIndex="3">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Pris:" GridPane.rowIndex="4">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Kommentar:" GridPane.rowIndex="5">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Vara beställd:" GridPane.rowIndex="6">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Kund kontaktad:" GridPane.rowIndex="7">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="Vara utlämnad:" GridPane.rowIndex="8">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="nameLabel" GridPane.columnIndex="1">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="phoneNoLabel" layoutX="207.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="itemLabel" layoutX="207.0" layoutY="43.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="itemNoLabel" layoutX="207.0" layoutY="76.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="priceLabel" layoutX="207.0" layoutY="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="commentLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="orderedLabel" layoutX="207.0" layoutY="175.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="contactedLabel" layoutX="207.0" layoutY="253.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="deliveredLabel" layoutX="207.0" layoutY="286.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
-   </children>
+      <Label text="Telefonnummer:" GridPane.rowIndex="1">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Vara:" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Artikelnummer:" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Pris:" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Kommentar:" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Vara beställd:" GridPane.rowIndex="6">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Kund kontaktad:" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label text="Vara utlämnad:" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" GridPane.columnIndex="1">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="phoneNoLabel" layoutX="207.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="itemLabel" layoutX="207.0" layoutY="43.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="itemNoLabel" layoutX="207.0" layoutY="76.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" layoutX="207.0" layoutY="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="commentLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="orderedLabel" layoutX="207.0" layoutY="175.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="contactedLabel" layoutX="207.0" layoutY="253.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Label fx:id="deliveredLabel" layoutX="207.0" layoutY="286.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+   </GridPane>
 </AnchorPane>
