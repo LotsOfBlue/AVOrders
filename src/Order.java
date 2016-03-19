@@ -1,8 +1,11 @@
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Represents an order in the program.
+ * Contains all pertinent info such as customer, item, price, etc.
+ * @author Johan Blomberg
+ */
 public class Order implements Serializable{
 
 	private final int id;
@@ -17,13 +20,20 @@ public class Order implements Serializable{
 	private LocalDate contactedDate;
 	private LocalDate deliveredDate;
 
-	//TODO
-	private static List<Order> allOrders = new ArrayList<>();
-
+	/**
+	 * Create a new order, and add it to the list of all Orders
+	 * @param name The customer's name
+	 * @param phoneNo The customer's phone number
+	 * @param item The item(s) to be ordered
+	 * @param itemNo The item number of the item(s)
+	 * @param price Item's price
+	 * @param comment Any extra info the user wants to add
+	 */
 	Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
 		//Assign ID to the order, and increment the ID for the next order
 		this.id = OrderUtils.getLatestOrder();
 		OrderUtils.incrementOrder();
+
 		//Set parameters from user input
 		this.name = name;
 		this.phoneNo = phoneNo;
@@ -31,6 +41,7 @@ public class Order implements Serializable{
 		this.itemNo = itemNo;
 		this.price = price;
 		this.comment = comment;
+
 		//Set creation date based on the current date
 		this.creationDate = LocalDate.now();
 
