@@ -1,6 +1,7 @@
 import javafx.scene.control.TextField;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,24 +10,25 @@ import java.util.List;
  */
 abstract class OrderUtils {
 
-    private static File savedOrders = new File("src/SavedOrders");
+    //The filed to load from (initialized later)
+    private static File savedOrders = null;
 
-    private static Integer latestOrder = 1;
+    private static Integer nextOrder = 1;
     private static List<Order> orderList = new ArrayList<>();
 
 	/**
      * Get the ID number of the next order.
      * @return The ID the next order will have
      */
-    static Integer getLatestOrder() {
-        return latestOrder;
+    static Integer getNextOrderID() {
+        return nextOrder;
     }
 
 	/**
      * Increment the ID number.
      */
     static void incrementOrder() {
-        latestOrder++;
+        nextOrder++;
     }
 
     /**
@@ -46,8 +48,8 @@ abstract class OrderUtils {
     }
 
 	/**
-     * Checks if a mandatory text field contains any text.
-     * Displays an error message in the field if it's empty or just contains whitespace
+     * Checks if a mandatory text field contains any text, and
+     * displays an error message in the field if it's empty or just contains whitespace.
      * @param field The textfield to check
      * @param errorMsg The message to display if the field is empty
      * @return The trimmed contents of the field
@@ -79,61 +81,63 @@ abstract class OrderUtils {
         return contents;
     }
 
-    /**
-     * Load the ID number and list of orders from the file.
+	/**
+     * Get the path of the file used to store the saved Orders.
      */
-    static void loadFromFile() throws IOException {
-        //TODO
+    private static void initializeFile() {
 
-        ObjectInputStream objectIn = null;
+        File file = null;
 
         try {
-            //Create the file if it doesn't exist
-            savedOrders = new File(OrderUtils.class.getResource("SavedOrders").toURI());
-            savedOrders.createNewFile();
+            file = new File(OrderUtils.class.getResource("SavedOrders").toURI());
+        } catch (URISyntaxException e) {
+            System.out.println("Fel URIsyntax");
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            System.out.println("Null i initializeFile()!");
+            e.printStackTrace();
+        }
 
-            //Read the file and retrieve the Orders and ID of the latest order from it
-            objectIn = new ObjectInputStream(new FileInputStream(savedOrders));
-            latestOrder = (Integer)objectIn.readObject();
+        savedOrders = file;
+    }
+
+    /**
+     * Load the ID number and all orders from the file.
+     */
+    static void loadFromFile() {
+        initializeFile();
+
+        try (ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(savedOrders))) {
+            //Read the file and retrieve the Orders and the ID of the next order from it
+            nextOrder = (Integer)objectIn.readObject();
+            //Read Orders from the file perpetually until EOF is reached
             while (true) {
                 addOrder((Order) objectIn.readObject());
             }
         } catch (EOFException e) {
-            System.out.println("Läst färdigt filen.");
+            System.out.println("Laddat klart.");
         }
         catch (IOException e) {
             System.out.println("Fel med IO i inputstream!");
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            objectIn.close();
         }
     }
 
     /**
-     * Save the ID number and list of orders to the file.
+     * Save the ID number and all orders to the file.
      */
-    static void saveToFile() throws IOException {
-        //TODO
-
-        ObjectOutputStream objectOut = null;
-
-        //Serializes the list of all orders to file
-        try {
-            objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders));
-            objectOut.writeObject(latestOrder);
+    static void saveToFile() {
+        //Serializes all orders to the file
+        try (ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders))) {
+            objectOut.writeObject(nextOrder);
             for (Order o : orderList) {
                 objectOut.writeObject(o);
             }
-            objectOut.close();
         } catch (IOException e) {
             System.out.println("Fel med IO i outputstream.");
             e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            objectOut.close();
         }
     }
 }

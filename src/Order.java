@@ -31,7 +31,7 @@ public class Order implements Serializable{
 	 */
 	Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
 		//Assign ID to the order, and increment the ID for the next order
-		this.id = OrderUtils.getLatestOrder();
+		this.id = OrderUtils.getNextOrderID();
 		OrderUtils.incrementOrder();
 
 		//Set parameters from user input

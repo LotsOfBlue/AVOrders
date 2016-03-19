@@ -28,7 +28,7 @@ public class NewOrderController {
 	 * Display the ID the order will be given once created
 	 */
 	private void initialize() {
-		idLabel.setText(idLabel.getText() + OrderUtils.getLatestOrder());
+		idLabel.setText(idLabel.getText() + OrderUtils.getNextOrderID());
 	}
 
 	/**

@@ -4,8 +4,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class Main extends Application {
 
     static WindowController mainWindowController;
@@ -24,11 +22,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        try {
-            OrderUtils.loadFromFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        OrderUtils.loadFromFile();
         launch(args);
     }
 }

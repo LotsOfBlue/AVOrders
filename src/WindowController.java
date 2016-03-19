@@ -60,11 +60,7 @@ public class WindowController {
 	private void refreshList() {
 		//Sorts in the regular way before saving to file
 		OrderUtils.getOrders().sort(new IDSort());
-		try {
-			OrderUtils.saveToFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		OrderUtils.saveToFile();
 
 		//Empty the pane
 		listView.getItems().removeAll(OrderUtils.getOrders());
