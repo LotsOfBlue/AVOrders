@@ -26,9 +26,6 @@ public class WindowController {
 	 * Set the window to its initial state
 	 */
 	private void initialize() {
-		//TODO
-		System.out.println("Startar WindowController...");
-
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
 
@@ -82,9 +79,6 @@ public class WindowController {
 	 * Prepare the window for displaying the last selected order
 	 */
 	private void displayOrder() {
-		//TODO
-		System.out.println("Visar beställning!");
-
 		//Remove anything currently in infoPane
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
@@ -118,9 +112,6 @@ public class WindowController {
 	 * @param event
 	 */
 	public void newOrder(ActionEvent event) {
-		//TODO
-		System.out.println("Ny beställning!");
-
 		//Remove anything currently in infoPane
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
@@ -131,6 +122,7 @@ public class WindowController {
 		editButton.setDisable(true);
 		deleteButton.setDisable(true);
 
+		//Disable the listview and choicebox
 		listView.setDisable(true);
 		sortModeBox.setDisable(true);
 
@@ -156,9 +148,6 @@ public class WindowController {
 	 * @param event
 	 */
 	public void editOrder(ActionEvent event) {
-		//TODO
-		System.out.println("Redigerar beställning!");
-
 		//Remove anything currently in infoPane
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
@@ -167,6 +156,7 @@ public class WindowController {
 		//Disable buttons
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
+		newButton.setDisable(true);
 
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -189,9 +179,6 @@ public class WindowController {
 	 * @param event
 	 */
 	public void deleteOrder(ActionEvent event) {
-		//TODO
-		System.out.println("Tar bort beställning!");
-
 		OrderUtils.getOrders().remove(lastSelected);
 		listView.getItems().remove(lastSelected);
 
@@ -203,7 +190,7 @@ public class WindowController {
 
 	/**
 	 * Cancel the creation of a new order,
-	 * and reset the buttons to their default
+	 * and reset the buttons to their default.
 	 */
 	void exitNewOrder() {
 		infoPane.getChildren().remove(0);
@@ -215,7 +202,7 @@ public class WindowController {
 
 	/**
 	 * Cancel/finish editing an order,
-	 * reset buttons to default and display the order again
+	 * reset buttons to default and display the order again.
 	 */
 	void exitEditOrder() {
 		infoPane.getChildren().remove(0);
