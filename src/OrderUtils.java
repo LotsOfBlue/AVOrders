@@ -82,18 +82,22 @@ abstract class OrderUtils {
     /**
      * Load the ID number and list of orders from the file.
      */
-    static void loadFromFile() {
+    static void loadFromFile() throws IOException {
         //TODO
+
+        ObjectInputStream objectIn = null;
+
         try {
             //Create the file if it doesn't exist
             savedOrders = new File(OrderUtils.class.getResource("SavedOrders").toURI());
             savedOrders.createNewFile();
 
             //Read the file and retrieve the Orders and ID of the latest order from it
-            ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(savedOrders));
+            objectIn = new ObjectInputStream(new FileInputStream(savedOrders));
             latestOrder = (Integer)objectIn.readObject();
-            orderList = (ArrayList<Order>)objectIn.readObject();
-            objectIn.close();
+            while (true) {
+                addOrder((Order) objectIn.readObject());
+            }
         } catch (EOFException e) {
             System.out.println("Läst färdigt filen.");
         }
@@ -102,25 +106,34 @@ abstract class OrderUtils {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            objectIn.close();
         }
     }
 
     /**
      * Save the ID number and list of orders to the file.
      */
-    static void saveToFile() {
+    static void saveToFile() throws IOException {
         //TODO
+
+        ObjectOutputStream objectOut = null;
+
         //Serializes the list of all orders to file
         try {
-            ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders));
+            objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders));
             objectOut.writeObject(latestOrder);
-            objectOut.writeObject(orderList);
+            for (Order o : orderList) {
+                objectOut.writeObject(o);
+            }
             objectOut.close();
         } catch (IOException e) {
             System.out.println("Fel med IO i outputstream.");
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            objectOut.close();
         }
     }
 }
