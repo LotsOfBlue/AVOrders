@@ -131,6 +131,6 @@ public class Order implements Serializable{
 
 	@Override
 	public String toString() {
-		return "#" + id + "\t\t\t\t\t       " + creationDate + "\n" + name + "\n" + item;
+		return "#" + id + "\t\t" + creationDate + "\n" + name + "\n" + item;
 	}
 }
