@@ -9,13 +9,19 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.Comparator;
 
+/**
+ * Controller for the main window.
+ * Displays the list of Orders and an additional pane
+ * for viewing/editing/creating orders.
+ * @author Johan Blomberg
+ */
 public class WindowController {
 	public Button newButton;
 	public Button editButton;
 	public Button deleteButton;
 	public AnchorPane infoPane;
 	public ChoiceBox<String> sortModeBox;
-	public ListView listView;
+	public ListView<Order> listView;
 
 	private Comparator[] comparators;
 
@@ -33,7 +39,7 @@ public class WindowController {
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
 		sortModeBox.setValue(sortModeBox.getItems().get(0));
 
-		//Call refreshList() when a new sorting mode is selected
+		//Call refreshList() whenever a new sorting mode is selected
 		sortModeBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
 			refreshList();
 		});
@@ -52,7 +58,7 @@ public class WindowController {
 	 * rearranging the list as necessary and saving all orders.
 	 */
 	private void refreshList() {
-		//Sorts in the regular way before saving
+		//Sorts in the regular way before saving to file
 		OrderUtils.getOrders().sort(new IDSort());
 		OrderUtils.saveToFile();
 
@@ -71,7 +77,7 @@ public class WindowController {
 	 * Store the Order that was last clicked, and display it
 	 */
 	public void getSelectedOrder() {
-		lastSelected = (Order) listView.getSelectionModel().getSelectedItem();
+		lastSelected = listView.getSelectionModel().getSelectedItem();
 		displayOrder();
 	}
 
@@ -88,22 +94,21 @@ public class WindowController {
 		editButton.setDisable(false);
 		deleteButton.setDisable(false);
 
-		if (lastSelected != null) {
-			try {
-				FXMLLoader loader = new FXMLLoader();
-				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
-				displayOrderPane.setPrefWidth(infoPane.getWidth());
-				displayOrderPane.setPrefHeight(infoPane.getHeight());
-				infoPane.getChildren().add(displayOrderPane);
+		//Place the correct pane in infoPane
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
+			displayOrderPane.setPrefWidth(infoPane.getWidth());
+			displayOrderPane.setPrefHeight(infoPane.getHeight());
+			infoPane.getChildren().add(displayOrderPane);
 
-				//Display the order's info
-				DisplayOrderController controller = loader.getController();
-				controller.populateLabels(lastSelected);
-
-			}
-			catch (IOException e) {
-				System.out.println("Kunde inte ladda displayOrder.fxml");
-			}
+			//Display the order's info
+			DisplayOrderController controller = loader.getController();
+			controller.populateLabels(lastSelected);
+		}
+		catch (IOException e) {
+			System.out.println("Kunde inte ladda displayOrder.fxml");
+			e.printStackTrace();
 		}
 	}
 
@@ -117,14 +122,11 @@ public class WindowController {
 			infoPane.getChildren().remove(0);
 		}
 
-		//Disable the buttons
+		//Disable the buttons and the listview
 		newButton.setDisable(true);
 		editButton.setDisable(true);
 		deleteButton.setDisable(true);
-
-		//Disable the listview and choicebox
 		listView.setDisable(true);
-		sortModeBox.setDisable(true);
 
 		//Place the correct pane in infoPane
 		try {
@@ -140,6 +142,7 @@ public class WindowController {
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda newOrder.fxml");
+			e.printStackTrace();
 		}
 	}
 
@@ -153,11 +156,13 @@ public class WindowController {
 			infoPane.getChildren().remove(0);
 		}
 
-		//Disable buttons
+		//Disable the buttons and listview
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
 		newButton.setDisable(true);
+		listView.setDisable(true);
 
+		//Place the correct pane in infoPane
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			AnchorPane editOrderPane = loader.load(getClass().getResource("editOrder.fxml").openStream());
@@ -171,20 +176,28 @@ public class WindowController {
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda editOrder.fxml");
+			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * TODO
+	 * Delete the currently selected Order, both from the visible
+	 * listview and internally
 	 * @param event
 	 */
 	public void deleteOrder(ActionEvent event) {
 		OrderUtils.getOrders().remove(lastSelected);
 		listView.getItems().remove(lastSelected);
 
-		infoPane.getChildren().remove(0);
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+
+		//Disable buttons
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
+
 		refreshList();
 	}
 
@@ -193,10 +206,16 @@ public class WindowController {
 	 * and reset the buttons to their default.
 	 */
 	void exitNewOrder() {
-		infoPane.getChildren().remove(0);
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+
+		//Enable the "new" button
 		newButton.setDisable(false);
+		//Enable the listview
 		listView.setDisable(false);
-		sortModeBox.setDisable(false);
+
 		refreshList();
 	}
 
@@ -205,9 +224,15 @@ public class WindowController {
 	 * reset buttons to default and display the order again.
 	 */
 	void exitEditOrder() {
-		infoPane.getChildren().remove(0);
+		//Remove anything currently in infoPane
+		while (infoPane.getChildren().size() > 0) {
+			infoPane.getChildren().remove(0);
+		}
+
+		//Enable the "new" button and the listview
 		newButton.setDisable(false);
 		listView.setDisable(false);
+
 		refreshList();
 		displayOrder();
 	}
