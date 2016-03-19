@@ -107,7 +107,8 @@ abstract class OrderUtils {
     static void loadFromFile() {
         initializeFile();
 
-        try (ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(savedOrders))) {
+        try (FileInputStream fileIn = new FileInputStream(savedOrders);
+             ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
             //Read the file and retrieve the Orders and the ID of the next order from it
             nextOrder = (Integer)objectIn.readObject();
             //Read Orders from the file perpetually until EOF is reached
@@ -130,7 +131,8 @@ abstract class OrderUtils {
      */
     static void saveToFile() {
         //Serializes all orders to the file
-        try (ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(savedOrders))) {
+        try (FileOutputStream fileOut = new FileOutputStream(savedOrders);
+             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
             objectOut.writeObject(nextOrder);
             for (Order o : orderList) {
                 objectOut.writeObject(o);
