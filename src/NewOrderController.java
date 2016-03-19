@@ -5,6 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller for newOrder.fxml
+ * Lets the user create a new Order.
+ * @author Johan Blomberg
+ */
 public class NewOrderController {
 	public Label idLabel;
 
@@ -27,13 +32,13 @@ public class NewOrderController {
 	}
 
 	/**
-	 * todo
+	 * Called when the user clicks the "create" button.
+	 * Checks if the textfields contain legal values,
+	 * and displays error messages if they don't.
+	 * If there are no errors, creates a new Order object.
 	 * @param event
 	 */
 	public void finishCreate(ActionEvent event) {
-		//TODO
-		System.out.println("Klar med nya ordern!");
-
 		//Gather all text fields for easy access
 		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
 
@@ -71,10 +76,12 @@ public class NewOrderController {
 		}
 	}
 
+	/**
+	 * Called when the user clicks the "cancel" button.
+	 * Exits the pane.
+	 * @param event
+	 */
 	public void cancel(ActionEvent event) {
-		//TODO
-		System.out.println("Avbröt...");
-
 		Main.mainWindowController.exitNewOrder();
 	}
 }

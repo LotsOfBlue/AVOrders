@@ -1,5 +1,10 @@
 import javafx.scene.control.Label;
 
+/**
+ * Controller for displayOrder.fxml
+ * Gets info from an Order and changes all labels accordingly.
+ * @author Johan Blomberg
+ */
 public class DisplayOrderController {
 
 	public Label nameLabel;
@@ -14,8 +19,8 @@ public class DisplayOrderController {
 	public Label idLabel;
 
 	/**
-	 * todo
-	 * @param order
+	 * Fills all empty labels with the appropriate data from the Order parameter.
+	 * @param order The order to get the data from
 	 */
 	void populateLabels(Order order) {
 		idLabel.setText("Beställning nr. " + order.getId() + " (" + order.getCreationDate() + ")");

@@ -6,6 +6,11 @@ import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
 
+/**
+ * Controller for editOrder.fxml.
+ * Lets the user modify an Orders's data.
+ * @author Johan Blomberg
+ */
 public class EditOrderController {
 
 	public TextField nameField;
@@ -22,8 +27,8 @@ public class EditOrderController {
 	private Order order;
 
 	/**
-	 * todo
-	 * @param order
+	 * Fills the textfields with the data the Order contains.
+	 * @param order The order to get data from.
 	 */
 	void populateFields(Order order) {
 		this.order = order;
@@ -54,7 +59,9 @@ public class EditOrderController {
 	}
 
 	/**
-	 * todo
+	 * Called when the user clicks the "save" button.
+	 * Checks if all text fields contain legal values,
+	 * and displays error messages if they don't.
 	 * @param event
 	 */
 	public void finishEdit(ActionEvent event) {
@@ -102,12 +109,14 @@ public class EditOrderController {
 			else {
 				order.setOrderedDate(null);
 			}
+
 			if(!contactedBox.getText().equals("")) {
 				order.setContactedDate(LocalDate.parse(contactedBox.getText()));
 			}
 			else {
 				order.setContactedDate(null);
 			}
+
 			if(!deliveredBox.getText().equals("")) {
 				order.setDeliveredDate(LocalDate.parse(deliveredBox.getText()));
 			}
@@ -120,7 +129,9 @@ public class EditOrderController {
 	}
 
 	/**
-	 * todo
+	 * Called when the user clicks one of the checkboxes.
+	 * Adds the current date to the box's label,
+	 * or removes it if there was already one there.
 	 * @param event
 	 */
 	public void addCurrentDate(ActionEvent event) {
@@ -131,17 +142,14 @@ public class EditOrderController {
 		else {
 			box.setText("");
 		}
-
 	}
 
 	/**
-	 * todo
+	 * Called when the user clicks the "cancel" button.
+	 * Discards all changes and exits the pane.
 	 * @param event
 	 */
 	public void cancel(ActionEvent event) {
-		//TODO
-		System.out.println("Avbröt...");
-
 		Main.mainWindowController.exitEditOrder();
 	}
 }
