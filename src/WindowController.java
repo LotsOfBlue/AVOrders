@@ -1,14 +1,13 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Optional;
 
 /**
  * Controller for the main window.
@@ -184,23 +183,37 @@ public class WindowController {
 
 	/**
 	 * Delete the currently selected Order, both from the visible
-	 * listview and internally
+	 * listview and internally. Asks the user for confirmation via a dialog box.
 	 * @param event
 	 */
 	public void deleteOrder(ActionEvent event) {
-		OrderUtils.getOrders().remove(lastSelected);
-		listView.getItems().remove(lastSelected);
+		//Asks the user for confirmation
+		Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION);
+		confirmDelete.setTitle(null);
+		confirmDelete.setHeaderText("Vill du ta bort beställningen?");
+		confirmDelete.setContentText(lastSelected.toString());
+		Optional<ButtonType> choice = confirmDelete.showAndWait();
 
-		//Remove anything currently in infoPane
-		while (infoPane.getChildren().size() > 0) {
-			infoPane.getChildren().remove(0);
+		//If the user confirmed the deletion, delete the order
+		if (choice.get() == ButtonType.OK) {
+			OrderUtils.getOrders().remove(lastSelected);
+			listView.getItems().remove(lastSelected);
+
+			//Remove anything currently in infoPane
+			while (infoPane.getChildren().size() > 0) {
+				infoPane.getChildren().remove(0);
+			}
+
+			//Disable buttons
+			deleteButton.setDisable(true);
+			editButton.setDisable(true);
+
+			refreshList();
 		}
-
-		//Disable buttons
-		deleteButton.setDisable(true);
-		editButton.setDisable(true);
-
-		refreshList();
+		//If the user chose to cancel, go back to displaying the order
+		else {
+			displayOrder();
+		}
 	}
 
 	/**
