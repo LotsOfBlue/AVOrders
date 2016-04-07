@@ -1,7 +1,6 @@
 import javafx.scene.control.TextField;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +10,8 @@ import java.util.List;
  */
 abstract class OrderUtils {
 
-    //The filed to load from (initialized later)
-    private static File savedOrders = null;
+    //The file to load from (initialized later)
+    private static File savedOrders;
 
     private static Integer nextOrder = 1;
     private static List<Order> orderList = new ArrayList<>();
@@ -86,16 +85,11 @@ abstract class OrderUtils {
      * Get the path of the file used to store the saved Orders.
      */
     private static void initializeFile() {
-
         File file = null;
 
         try {
-            file = new File(OrderUtils.class.getResource("SavedOrders").toURI());
-        } catch (URISyntaxException e) {
-            System.out.println("Fel URIsyntax");
-            e.printStackTrace();
+            file = new File("./SavedOrders");
         } catch (NullPointerException e) {
-            System.out.println("Null i initializeFile()!");
             e.printStackTrace();
         }
 
