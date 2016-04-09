@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -24,6 +26,7 @@ public class WindowController {
 	public AnchorPane infoPane;
 	public ChoiceBox<String> sortModeBox;
 	public ListView<Order> listView;
+	public ImageView image;
 
 	private ArrayList<Comparator<Order>> comparators = new ArrayList<>();
 
@@ -34,6 +37,8 @@ public class WindowController {
 	 * Set the window to its initial state
 	 */
 	private void initialize() {
+		image.setImage(new Image(this.getClass().getResourceAsStream("AVlogo.png")));
+
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
 
