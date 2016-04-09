@@ -18,7 +18,7 @@ public class Main extends Application {
         mainWindowController = loader.getController();
 
         primaryStage.setTitle("Beställningar");
-        primaryStage.setScene(new Scene(mainWindow, 800, 700));
+        primaryStage.setScene(new Scene(mainWindow, 750, 700));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
