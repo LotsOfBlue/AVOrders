@@ -80,9 +80,6 @@ public class EditOrderController {
 		//Get the customer name from the text field
 		String name = OrderUtils.checkMandatoryField(nameField, "Du måste ange ett namn.");
 
-		//Get the phone number from the text field
-		String phoneNo = OrderUtils.checkNumberField(phoneNoField);
-
 		//Get the item name from the text field
 		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
 
@@ -99,7 +96,7 @@ public class EditOrderController {
 		//If everything's alright, finish the edit and exit the pane
 		if(clearToContinue) {
 			order.setName(name);
-			order.setPhoneNo(phoneNo);
+			order.setPhoneNo(phoneNoField.getText().trim());
 			order.setItem(item);
 			order.setItemNo(itemNoField.getText().trim());
 			order.setPrice(price);

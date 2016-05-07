@@ -54,9 +54,6 @@ public class NewOrderController {
 		//Get the customer name from the text field
 		String name = OrderUtils.checkMandatoryField(nameField, "Du måste ange ett namn.");
 
-		//Get the phone number from the text field
-		String phoneNo = OrderUtils.checkNumberField(phoneNoField);
-
 		//Get the item name from the text field
 		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
 
@@ -72,7 +69,7 @@ public class NewOrderController {
 
 		//If everything's alright, create the order and exit the pane
 		if(clearToContinue) {
-			new Order(name, phoneNo, item, itemNoField.getText().trim(), price, commentField.getText().trim());
+			new Order(name, phoneNoField.getText().trim(), item, itemNoField.getText().trim(), price, commentField.getText().trim());
 
 			Main.mainWindowController.exitNewOrder();
 		}
