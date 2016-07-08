@@ -71,8 +71,8 @@ public class EditOrderController {
 		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
 
 		//Clear all prompts from the text fields
-		for (int i = 0; i < allFields.length - 1; i++) {
-			allFields[i].setPromptText("");
+		for (TextField field : allFields) {
+			field.setPromptText("");
 		}
 
 		Boolean clearToContinue = true;
@@ -82,9 +82,6 @@ public class EditOrderController {
 
 		//Get the item name from the text field
 		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
-
-		//Get the item's price from the text field
-		String price = OrderUtils.checkNumberField(priceField);
 
 		//If any field contains prompt text, the edit can't be completed
 		for (int i = 0; i < allFields.length - 1; i++) {
@@ -99,7 +96,7 @@ public class EditOrderController {
 			order.setPhoneNo(phoneNoField.getText().trim());
 			order.setItem(item);
 			order.setItemNo(itemNoField.getText().trim());
-			order.setPrice(price);
+			order.setPrice(priceField.getText().trim());
 			order.setComment(commentField.getText().trim());
 
 			if(!orderedBox.getText().equals("")) {

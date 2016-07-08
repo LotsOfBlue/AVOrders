@@ -45,8 +45,8 @@ public class NewOrderController {
 		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
 
 		//Clear all prompts from the text fields
-		for (int i = 0; i < allFields.length - 1; i++) {
-			allFields[i].setPromptText("");
+		for (TextField field : allFields) {
+			field.setPromptText("");
 		}
 
 		Boolean clearToContinue = true;
@@ -57,9 +57,6 @@ public class NewOrderController {
 		//Get the item name from the text field
 		String item = OrderUtils.checkMandatoryField(itemField, "Du måste ange en vara.");
 
-		//Get the item's price from the text field
-		String price = OrderUtils.checkNumberField(priceField);
-
 		//If any field contains prompt text, the order can't be created
 		for (int i = 0; i < allFields.length - 1; i++) {
 			if (!allFields[i].getPromptText().equals("")) {
@@ -69,7 +66,12 @@ public class NewOrderController {
 
 		//If everything's alright, create the order and exit the pane
 		if(clearToContinue) {
-			new Order(name, phoneNoField.getText().trim(), item, itemNoField.getText().trim(), price, commentField.getText().trim());
+			new Order(name,
+					phoneNoField.getText().trim(),
+					item,
+					itemNoField.getText().trim(),
+					priceField.getText().trim(),
+					commentField.getText().trim());
 
 			Main.mainWindowController.exitNewOrder();
 		}
