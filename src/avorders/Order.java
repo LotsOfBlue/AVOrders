@@ -10,6 +10,8 @@ import java.time.LocalDate;
  */
 public class Order implements Serializable{
 
+	private static final long serialVersionUID = -8223321276144713051L;
+
 	private final int id;
 	private String name;
 	private String phoneNo;
