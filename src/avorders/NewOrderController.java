@@ -25,10 +25,10 @@ public class NewOrderController {
 	public Button createButton;
 	public Button cancelButton;
 
-	@FXML
 	/**
 	 * Display the ID the order will be given once created
 	 */
+	@FXML
 	private void initialize() {
 		idLabel.setText(idLabel.getText() + OrderUtils.getNextOrderID());
 	}

@@ -32,10 +32,10 @@ public class WindowController {
 
 	private Order lastSelected;
 
-	@FXML
 	/**
 	 * Set the window to its initial state
 	 */
+	@FXML
 	private void initialize() {
 		image.setImage(new Image(this.getClass().getResourceAsStream("AVlogo.png")));
 
