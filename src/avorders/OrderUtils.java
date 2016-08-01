@@ -10,7 +10,7 @@ import java.util.List;
  * Contains methods for handling Orders and the editing of such, as well as related I/O.
  * @author Johan Blomberg
  */
-abstract class OrderUtils {
+public abstract class OrderUtils {
 
     //The file to load from (initialized later)
     private static File savedOrders;
@@ -22,14 +22,14 @@ abstract class OrderUtils {
      * Get the ID number of the next order.
      * @return The ID the next order will have
      */
-    static Integer getNextOrderID() {
+    public static Integer getNextOrderID() {
         return nextOrder;
     }
 
 	/**
      * Increment the ID number.
      */
-    static void incrementOrderID() {
+    public static void incrementOrderID() {
         nextOrder++;
     }
 
@@ -37,7 +37,7 @@ abstract class OrderUtils {
      * Adds an order to the list of orders.
      * @param order Order to add
      */
-    static void addOrder(Order order) {
+    public static void addOrder(Order order) {
         orderList.add(order);
     }
 
@@ -45,7 +45,7 @@ abstract class OrderUtils {
      * Get the list of orders.
      * @return The list of all orders
      */
-    static List<Order> getOrders() {
+    public static List<Order> getOrders() {
         return orderList;
     }
 
@@ -56,7 +56,7 @@ abstract class OrderUtils {
      * @param errorMsg The message to display if the field is empty
      * @return The trimmed contents of the field
      */
-    static String checkMandatoryField(TextField field, String errorMsg) {
+    public static String checkMandatoryField(TextField field, String errorMsg) {
         //Get the customer name from the text field
         String contents = field.getText().trim();
         if(contents.equals("")) {
@@ -72,7 +72,7 @@ abstract class OrderUtils {
      * @param field The textfield to check
      * @return The trimmed contents of the field
      */
-    static String checkNumberField(TextField field) {
+    public static String checkNumberField(TextField field) {
         String contents = field.getText().trim();
         for (char c : contents.toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -101,7 +101,7 @@ abstract class OrderUtils {
     /**
      * Load the ID number and all orders from the file.
      */
-    static void loadFromFile() {
+    public static void loadFromFile() {
         initializeFile();
 
         try (FileInputStream fileIn = new FileInputStream(savedOrders);
@@ -126,7 +126,7 @@ abstract class OrderUtils {
     /**
      * Save the ID number and all orders to the file.
      */
-    static void saveToFile() {
+    public static void saveToFile() {
         //Serializes all orders to the file
         try (FileOutputStream fileOut = new FileOutputStream(savedOrders);
              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {

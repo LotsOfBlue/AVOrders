@@ -8,12 +8,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    static WindowController mainWindowController;
-
+    private static WindowController mainWindowController;
+    
+    public static WindowController getMainWindowController() {
+        return mainWindowController;
+    }
+    
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader();
-        Pane mainWindow = loader.load(getClass().getResource("window.fxml").openStream());
+        Pane mainWindow = loader.load(Main.class.getResource("window.fxml").openStream());
 
         mainWindowController = loader.getController();
 

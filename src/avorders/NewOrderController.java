@@ -73,7 +73,7 @@ public class NewOrderController {
 					priceField.getText().trim(),
 					commentField.getText().trim());
 
-			Main.mainWindowController.exitNewOrder();
+			Main.getMainWindowController().exitNewOrder();
 		}
 	}
 
@@ -83,6 +83,6 @@ public class NewOrderController {
 	 * @param event
 	 */
 	public void cancel(ActionEvent event) {
-		Main.mainWindowController.exitNewOrder();
+		Main.getMainWindowController().exitNewOrder();
 	}
 }

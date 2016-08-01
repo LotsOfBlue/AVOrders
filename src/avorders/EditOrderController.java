@@ -120,7 +120,7 @@ public class EditOrderController {
 				order.setDeliveredDate(null);
 			}
 
-			Main.mainWindowController.exitEditOrder();
+			Main.getMainWindowController().exitEditOrder();
 		}
 	}
 
@@ -146,6 +146,6 @@ public class EditOrderController {
 	 * @param event
 	 */
 	public void cancel(ActionEvent event) {
-		Main.mainWindowController.exitEditOrder();
+		Main.getMainWindowController().exitEditOrder();
 	}
 }
