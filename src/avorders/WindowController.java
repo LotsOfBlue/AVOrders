@@ -22,13 +22,14 @@ import avorders.comparators.*;
  * @author Johan Blomberg
  */
 public class WindowController {
-	public Button newButton;
-	public Button editButton;
-	public Button deleteButton;
-	public AnchorPane infoPane;
-	public ChoiceBox<String> sortModeBox;
-	public ListView<Order> listView;
-	public ImageView image;
+	
+	@FXML private Button newButton;
+	@FXML private Button editButton;
+	@FXML private Button deleteButton;
+	@FXML private AnchorPane infoPane;
+	@FXML private ChoiceBox<String> sortModeBox;
+	@FXML private ListView<Order> listView;
+	@FXML private ImageView image;
 
 	private ArrayList<Comparator<Order>> comparators = new ArrayList<>();
 
@@ -148,7 +149,7 @@ public class WindowController {
 
 			//Gives input focus to the name field
 			NewOrderController controller = loader.getController();
-			controller.nameField.requestFocus();
+			controller.getNameField().requestFocus();
 		}
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda newOrder.fxml");

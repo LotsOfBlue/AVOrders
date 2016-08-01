@@ -1,6 +1,7 @@
 package avorders;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -14,17 +15,17 @@ import java.time.LocalDate;
  * @author Johan Blomberg
  */
 public class EditOrderController {
-
-	public TextField nameField;
-	public TextField phoneNoField;
-	public TextField itemField;
-	public TextField itemNoField;
-	public TextField priceField;
-	public TextArea commentField;
-	public CheckBox orderedBox;
-	public CheckBox contactedBox;
-	public CheckBox deliveredBox;
-	public Label idLabel;
+	
+	@FXML private TextField nameField;
+	@FXML private TextField phoneNoField;
+	@FXML private TextField itemField;
+	@FXML private TextField itemNoField;
+	@FXML private TextField priceField;
+	@FXML private TextArea commentField;
+	@FXML private CheckBox orderedBox;
+	@FXML private CheckBox contactedBox;
+	@FXML private CheckBox deliveredBox;
+	@FXML private Label idLabel;
 
 	private Order order;
 

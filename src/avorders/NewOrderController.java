@@ -13,17 +13,17 @@ import javafx.scene.control.TextField;
  * @author Johan Blomberg
  */
 public class NewOrderController {
-	public Label idLabel;
+	@FXML private Label idLabel;
 
-	public TextField nameField;
-	public TextField phoneNoField;
-	public TextField itemField;
-	public TextField itemNoField;
-	public TextField priceField;
-	public TextArea commentField;
+	@FXML private TextField nameField;
+	@FXML private TextField phoneNoField;
+	@FXML private TextField itemField;
+	@FXML private TextField itemNoField;
+	@FXML private TextField priceField;
+	@FXML private TextArea commentField;
 
-	public Button createButton;
-	public Button cancelButton;
+	@FXML private Button createButton;
+	@FXML private Button cancelButton;
 
 	/**
 	 * Display the ID the order will be given once created
@@ -31,6 +31,10 @@ public class NewOrderController {
 	@FXML
 	private void initialize() {
 		idLabel.setText(idLabel.getText() + OrderUtils.getNextOrderID());
+	}
+	
+	public TextField getNameField() {
+		return nameField;
 	}
 
 	/**

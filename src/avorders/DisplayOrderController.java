@@ -1,5 +1,6 @@
 package avorders;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 /**
@@ -8,17 +9,17 @@ import javafx.scene.control.Label;
  * @author Johan Blomberg
  */
 public class DisplayOrderController {
-
-	public Label nameLabel;
-	public Label phoneNoLabel;
-	public Label itemLabel;
-	public Label itemNoLabel;
-	public Label priceLabel;
-	public Label commentLabel;
-	public Label orderedLabel;
-	public Label contactedLabel;
-	public Label deliveredLabel;
-	public Label idLabel;
+	
+	@FXML private Label nameLabel;
+	@FXML private Label phoneNoLabel;
+	@FXML private Label itemLabel;
+	@FXML private Label itemNoLabel;
+	@FXML private Label priceLabel;
+	@FXML private Label commentLabel;
+	@FXML private Label orderedLabel;
+	@FXML private Label contactedLabel;
+	@FXML private Label deliveredLabel;
+	@FXML private Label idLabel;
 
 	/**
 	 * Fills all empty labels with the appropriate data from the Order parameter.
