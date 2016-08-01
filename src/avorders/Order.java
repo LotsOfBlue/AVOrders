@@ -33,7 +33,7 @@ public class Order implements Serializable{
 	 * @param price Item's price
 	 * @param comment Any extra info the user wants to add
 	 */
-	Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
+	public Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
 		//Assign ID to the order, and increment the ID for the next order
 		this.id = OrderUtils.getNextOrderID();
 		OrderUtils.incrementOrderID();
@@ -53,83 +53,83 @@ public class Order implements Serializable{
 		OrderUtils.addOrder(this);
 	}
 
-	Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	String getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	void setPhoneNo(String phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
-	String getItem() {
+	public String getItem() {
 		return item;
 	}
 
-	void setItem(String item) {
+	public void setItem(String item) {
 		this.item = item;
 	}
 
-	String getItemNo() {
+	public String getItemNo() {
 		return itemNo;
 	}
 
-	void setItemNo(String itemNo) {
+	public void setItemNo(String itemNo) {
 		this.itemNo = itemNo;
 	}
 
-	String getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	void setPrice(String price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	String getComment() {
+	public String getComment() {
 		return comment;
 	}
 
-	void setComment(String comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
-	LocalDate getCreationDate() {
+	public LocalDate getCreationDate() {
 		return creationDate;
 	}
 
-	LocalDate getOrderedDate() {
+	public LocalDate getOrderedDate() {
 		return orderedDate;
 	}
 
-	void setOrderedDate(LocalDate orderedDate) {
+	public void setOrderedDate(LocalDate orderedDate) {
 		this.orderedDate = orderedDate;
 	}
 
-	LocalDate getContactedDate() {
+	public LocalDate getContactedDate() {
 		return contactedDate;
 	}
 
-	void setContactedDate(LocalDate contactedDate) {
+	public void setContactedDate(LocalDate contactedDate) {
 		this.contactedDate = contactedDate;
 	}
 
-	LocalDate getDeliveredDate() {
+	public LocalDate getDeliveredDate() {
 		return deliveredDate;
 	}
 
-	void setDeliveredDate(LocalDate deliveredDate) {
+	public void setDeliveredDate(LocalDate deliveredDate) {
 		this.deliveredDate = deliveredDate;
 	}
 

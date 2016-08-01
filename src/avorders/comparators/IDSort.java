@@ -1,4 +1,6 @@
-package avorders;
+package avorders.comparators;
+
+import avorders.Order;
 
 import java.util.Comparator;
 
@@ -6,7 +8,7 @@ import java.util.Comparator;
  * Compare two Orders by their ID numbers in descending order.
  * @author Johan Blomberg
  */
-class IDSort implements Comparator<Order> {
+public class IDSort implements Comparator<Order> {
 
 	/**
 	 * Sort two orders by their ID number.

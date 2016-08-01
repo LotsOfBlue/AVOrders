@@ -1,4 +1,6 @@
-package avorders;
+package avorders.comparators;
+
+import avorders.Order;
 
 import java.util.Comparator;
 
@@ -6,7 +8,7 @@ import java.util.Comparator;
  * Compares two Orders by sorting them alphabetically after their customer names.
  * @author Johan Blomberg
  */
-class CustomerSort implements Comparator<Order> {
+public class CustomerSort implements Comparator<Order> {
 
 	/**
 	 * Compares two orders by comparing the strings of their customer names.

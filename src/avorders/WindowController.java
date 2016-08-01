@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Optional;
 
+import avorders.comparators.*;
+
 /**
  * Controller for the main window.
  * Displays the list of Orders and an additional pane
