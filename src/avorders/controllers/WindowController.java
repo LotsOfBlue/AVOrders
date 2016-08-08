@@ -126,9 +126,9 @@ public class WindowController {
 
 	/**
 	 * Prepare the window for creating a new order
-	 * @param event
 	 */
-	public void newOrder(ActionEvent event) {
+	@FXML
+	private void newOrder(ActionEvent event) {
 		//Remove anything currently in infoPane
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
@@ -160,9 +160,9 @@ public class WindowController {
 
 	/**
 	 * Prepare the window for editing an order
-	 * @param event
 	 */
-	public void editOrder(ActionEvent event) {
+	@FXML
+	private void editOrder(ActionEvent event) {
 		//Remove anything currently in infoPane
 		while (infoPane.getChildren().size() > 0) {
 			infoPane.getChildren().remove(0);
@@ -195,9 +195,9 @@ public class WindowController {
 	/**
 	 * Delete the currently selected Order, both from the visible
 	 * listview and internally. Asks the user for confirmation via a dialog box.
-	 * @param event
 	 */
-	public void deleteOrder(ActionEvent event) {
+	@FXML
+	private void deleteOrder(ActionEvent event) {
 		//Asks the user for confirmation
 		Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION);
 		confirmDelete.setTitle(null);

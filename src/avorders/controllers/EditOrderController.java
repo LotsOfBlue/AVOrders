@@ -68,9 +68,9 @@ public class EditOrderController {
 	 * Called when the user clicks the "save" button.
 	 * Checks if all text fields contain legal values,
 	 * and displays error messages if they don't.
-	 * @param event
 	 */
-	public void finishEdit(ActionEvent event) {
+	@FXML
+	private void finishEdit(ActionEvent event) {
 		//Gather all text fields for easy access
 		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
 
@@ -132,9 +132,9 @@ public class EditOrderController {
 	 * Called when the user clicks one of the checkboxes.
 	 * Adds the current date to the box's label,
 	 * or removes it if there was already one there.
-	 * @param event
 	 */
-	public void addCurrentDate(ActionEvent event) {
+	@FXML
+	private void addCurrentDate(ActionEvent event) {
 		CheckBox box = (CheckBox)event.getSource();
 		if(box.getText().equals("")) {
 			box.setText(LocalDate.now().toString());
@@ -147,9 +147,9 @@ public class EditOrderController {
 	/**
 	 * Called when the user clicks the "cancel" button.
 	 * Discards all changes and exits the pane.
-	 * @param event
 	 */
-	public void cancel(ActionEvent event) {
+	@FXML
+	private void cancel(ActionEvent event) {
 		Main.getMainWindowController().exitEditOrder();
 	}
 }

@@ -26,7 +26,6 @@ public class NewOrderController {
 	@FXML private TextArea commentField;
 
 	@FXML private Button createButton;
-	@FXML private Button cancelButton;
 
 	/**
 	 * Display the ID the order will be given once created
@@ -45,9 +44,9 @@ public class NewOrderController {
 	 * Checks if the textfields contain legal values,
 	 * and displays error messages if they don't.
 	 * If there are no errors, creates a new Order object.
-	 * @param event
 	 */
-	public void finishCreate(ActionEvent event) {
+	@FXML
+	private void finishCreate(ActionEvent event) {
 		//Gather all text fields for easy access
 		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
 
@@ -87,9 +86,9 @@ public class NewOrderController {
 	/**
 	 * Called when the user clicks the "cancel" button.
 	 * Exits the pane.
-	 * @param event
 	 */
-	public void cancel(ActionEvent event) {
+	@FXML
+	private void cancel(ActionEvent event) {
 		Main.getMainWindowController().exitNewOrder();
 	}
 }
