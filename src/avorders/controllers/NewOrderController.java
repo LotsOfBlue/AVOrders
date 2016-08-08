@@ -1,5 +1,8 @@
-package avorders;
+package avorders.controllers;
 
+import avorders.Main;
+import avorders.Order;
+import avorders.OrderUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,7 +36,7 @@ public class NewOrderController {
 		idLabel.setText(idLabel.getText() + OrderUtils.getNextOrderID());
 	}
 	
-	public TextField getNameField() {
+	TextField getNameField() {
 		return nameField;
 	}
 

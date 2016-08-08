@@ -1,5 +1,8 @@
-package avorders;
+package avorders.controllers;
 
+import avorders.Main;
+import avorders.Order;
+import avorders.OrderUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;

@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
             prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="avorders.EditOrderController">
+            fx:controller="avorders.controllers.EditOrderController">
     <Label fx:id="idLabel" layoutX="14.0" layoutY="64.0" text="Beställning nr." AnchorPane.leftAnchor="20.0"
            AnchorPane.topAnchor="55.0">
         <font>

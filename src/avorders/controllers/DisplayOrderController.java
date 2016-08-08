@@ -1,5 +1,6 @@
-package avorders;
+package avorders.controllers;
 
+import avorders.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

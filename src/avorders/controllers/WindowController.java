@@ -1,5 +1,10 @@
-package avorders;
+package avorders.controllers;
 
+import avorders.Order;
+import avorders.OrderUtils;
+import avorders.comparators.CustomerSort;
+import avorders.comparators.IDSort;
+import avorders.comparators.ReverseIDSort;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +17,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Optional;
-
-import avorders.comparators.*;
 
 /**
  * Controller for the main window.
@@ -40,7 +43,7 @@ public class WindowController {
 	 */
 	@FXML
 	private void initialize() {
-		image.setImage(new Image(this.getClass().getResourceAsStream("AVlogo.png")));
+		image.setImage(new Image(getClass().getResourceAsStream("../assets/AVlogo.png")));
 
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
@@ -50,9 +53,7 @@ public class WindowController {
 		sortModeBox.setValue(sortModeBox.getItems().get(0));
 
 		//Call refreshList() whenever a new sorting mode is selected
-		sortModeBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-			refreshList();
-		});
+		sortModeBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> refreshList());
 
 		//Store all available comparators for easy access
 		comparators.add(new IDSort());
@@ -106,8 +107,8 @@ public class WindowController {
 
 			//Place the correct pane in infoPane
 			try {
-				FXMLLoader loader = new FXMLLoader();
-				AnchorPane displayOrderPane = loader.load(getClass().getResource("displayOrder.fxml").openStream());
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../assets/displayOrder.fxml"));
+				AnchorPane displayOrderPane = loader.load();
 				displayOrderPane.setPrefWidth(infoPane.getWidth());
 				displayOrderPane.setPrefHeight(infoPane.getHeight());
 				infoPane.getChildren().add(displayOrderPane);
@@ -141,8 +142,8 @@ public class WindowController {
 
 		//Place the correct pane in infoPane
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			AnchorPane newOrderPane = loader.load(getClass().getResource("newOrder.fxml").openStream());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../assets/newOrder.fxml"));
+			AnchorPane newOrderPane = loader.load();
 			newOrderPane.setPrefWidth(infoPane.getWidth());
 			newOrderPane.setPrefHeight(infoPane.getHeight());
 			infoPane.getChildren().add(newOrderPane);
@@ -175,8 +176,8 @@ public class WindowController {
 
 		//Place the correct pane in infoPane
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			AnchorPane editOrderPane = loader.load(getClass().getResource("editOrder.fxml").openStream());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../assets/editOrder.fxml"));
+			AnchorPane editOrderPane = loader.load();
 			editOrderPane.setPrefWidth(infoPane.getWidth());
 			editOrderPane.setPrefHeight(infoPane.getHeight());
 			infoPane.getChildren().add(editOrderPane);

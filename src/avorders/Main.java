@@ -1,5 +1,6 @@
 package avorders;
 
+import avorders.controllers.WindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,8 +17,8 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader();
-        Pane mainWindow = loader.load(Main.class.getResource("window.fxml").openStream());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("assets/window.fxml"));
+        Pane mainWindow = loader.load();
 
         mainWindowController = loader.getController();
 
