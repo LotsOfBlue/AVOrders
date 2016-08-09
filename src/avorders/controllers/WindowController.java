@@ -1,5 +1,6 @@
 package avorders.controllers;
 
+import avorders.Main;
 import avorders.Order;
 import avorders.OrderUtils;
 import avorders.comparators.CustomerSort;
@@ -43,7 +44,12 @@ public class WindowController {
 	 */
 	@FXML
 	private void initialize() {
-		image.setImage(new Image(getClass().getResourceAsStream("../assets/AVlogo.png")));
+		try {
+			image.setImage(new Image(Main.class.getResourceAsStream("assets/AVlogo.png")));
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			image = null;
+		}
 
 		deleteButton.setDisable(true);
 		editButton.setDisable(true);
@@ -107,7 +113,7 @@ public class WindowController {
 
 			//Place the correct pane in infoPane
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../assets/displayOrder.fxml"));
+				FXMLLoader loader = new FXMLLoader(Main.class.getResource("assets/displayOrder.fxml"));
 				AnchorPane displayOrderPane = loader.load();
 				displayOrderPane.setPrefWidth(infoPane.getWidth());
 				displayOrderPane.setPrefHeight(infoPane.getHeight());
@@ -142,7 +148,7 @@ public class WindowController {
 
 		//Place the correct pane in infoPane
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../assets/newOrder.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("assets/newOrder.fxml"));
 			AnchorPane newOrderPane = loader.load();
 			newOrderPane.setPrefWidth(infoPane.getWidth());
 			newOrderPane.setPrefHeight(infoPane.getHeight());
@@ -176,7 +182,7 @@ public class WindowController {
 
 		//Place the correct pane in infoPane
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../assets/editOrder.fxml"));
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("assets/editOrder.fxml"));
 			AnchorPane editOrderPane = loader.load();
 			editOrderPane.setPrefWidth(infoPane.getWidth());
 			editOrderPane.setPrefHeight(infoPane.getHeight());
