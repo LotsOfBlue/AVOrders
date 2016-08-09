@@ -18,6 +18,7 @@ public class Order implements Serializable{
 	private String item;
 	private String itemNo;
 	private String price;
+	private String seller;
 	private String comment;
 	private final LocalDate creationDate;
 	private LocalDate orderedDate;
@@ -33,7 +34,7 @@ public class Order implements Serializable{
 	 * @param price Item's price
 	 * @param comment Any extra info the user wants to add
 	 */
-	public Order(String name, String phoneNo, String item, String itemNo, String price, String comment) {
+	public Order(String name, String phoneNo, String item, String itemNo, String price, String seller, String comment) {
 		//Assign ID to the order, and increment the ID for the next order
 		this.id = OrderUtils.getNextOrderID();
 		OrderUtils.incrementOrderID();
@@ -44,6 +45,7 @@ public class Order implements Serializable{
 		this.item = item;
 		this.itemNo = itemNo;
 		this.price = price;
+		this.seller = seller;
 		this.comment = comment;
 
 		//Set creation date based on the current date
@@ -95,6 +97,14 @@ public class Order implements Serializable{
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public String getSeller() {
+		return seller;
+	}
+
+	public void setSeller(String seller) {
+		this.seller = seller;
 	}
 
 	public String getComment() {

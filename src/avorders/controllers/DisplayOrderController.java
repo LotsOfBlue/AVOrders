@@ -16,6 +16,7 @@ public class DisplayOrderController {
 	@FXML private Label itemLabel;
 	@FXML private Label itemNoLabel;
 	@FXML private Label priceLabel;
+	@FXML private Label sellerLabel;
 	@FXML private Label commentLabel;
 	@FXML private Label orderedLabel;
 	@FXML private Label contactedLabel;
@@ -34,6 +35,7 @@ public class DisplayOrderController {
 		itemLabel.setText(order.getItem());
 		itemNoLabel.setText(order.getItemNo());
 		priceLabel.setText(order.getPrice());
+		sellerLabel.setText(order.getSeller());
 		commentLabel.setText(order.getComment());
 		if(order.getOrderedDate() != null) {
 			orderedLabel.setText(order.getOrderedDate().toString());

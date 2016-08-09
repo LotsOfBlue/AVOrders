@@ -24,6 +24,7 @@ public class EditOrderController {
 	@FXML private TextField itemField;
 	@FXML private TextField itemNoField;
 	@FXML private TextField priceField;
+	@FXML private TextField sellerField;
 	@FXML private TextArea commentField;
 	@FXML private CheckBox orderedBox;
 	@FXML private CheckBox contactedBox;
@@ -46,6 +47,7 @@ public class EditOrderController {
 		itemField.setText(order.getItem());
 		itemNoField.setText(order.getItemNo());
 		priceField.setText(order.getPrice());
+		sellerField.setText(order.getSeller());
 		commentField.setText(order.getComment());
 
 		if(order.getOrderedDate() != null) {
@@ -72,7 +74,7 @@ public class EditOrderController {
 	@FXML
 	private void finishEdit(ActionEvent event) {
 		//Gather all text fields for easy access
-		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
+		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField, sellerField};
 
 		//Clear all prompts from the text fields
 		for (TextField field : allFields) {
@@ -101,6 +103,7 @@ public class EditOrderController {
 			order.setItem(item);
 			order.setItemNo(itemNoField.getText().trim());
 			order.setPrice(priceField.getText().trim());
+			order.setSeller(sellerField.getText().trim());
 			order.setComment(commentField.getText().trim());
 
 			if(!orderedBox.getText().equals("")) {

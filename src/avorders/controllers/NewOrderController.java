@@ -23,6 +23,7 @@ public class NewOrderController {
 	@FXML private TextField itemField;
 	@FXML private TextField itemNoField;
 	@FXML private TextField priceField;
+	@FXML private TextField sellerField;
 	@FXML private TextArea commentField;
 
 	@FXML private Button createButton;
@@ -48,7 +49,7 @@ public class NewOrderController {
 	@FXML
 	private void finishCreate(ActionEvent event) {
 		//Gather all text fields for easy access
-		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField};
+		TextField[] allFields = {nameField, phoneNoField, itemField, itemNoField, priceField, sellerField};
 
 		//Clear all prompts from the text fields
 		for (TextField field : allFields) {
@@ -77,6 +78,7 @@ public class NewOrderController {
 					item,
 					itemNoField.getText().trim(),
 					priceField.getText().trim(),
+					sellerField.getText().trim(),
 					commentField.getText().trim());
 
 			Main.getMainWindowController().exitNewOrder();
