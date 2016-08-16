@@ -39,21 +39,26 @@
                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
             <AnchorPane prefHeight="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                         AnchorPane.rightAnchor="0.0">
-                <Button fx:id="newButton" layoutX="460.0" layoutY="10.0" mnemonicParsing="false" onAction="#newOrder"
-                        prefWidth="60.0" text="Ny" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
+                <Button fx:id="newButton" mnemonicParsing="false" onAction="#newOrder" prefWidth="60.0" text="Ny"
+                        AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0">
                     <font>
                         <Font size="14.0"/>
                     </font>
                 </Button>
-                <Button fx:id="editButton" layoutX="375.0" layoutY="10.0" mnemonicParsing="false" onAction="#editOrder"
-                        text="Redigera" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0">
+                <Button fx:id="editButton" mnemonicParsing="false" onAction="#editOrder" text="Redigera"
+                        AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="95.0">
                     <font>
                         <Font size="14.0"/>
                     </font>
                 </Button>
-                <Button fx:id="deleteButton" layoutX="23.0" layoutY="10.0" mnemonicParsing="false"
-                        onAction="#deleteOrder" text="Ta bort" AnchorPane.bottomAnchor="10.0"
-                        AnchorPane.leftAnchor="20.0">
+                <Button fx:id="printButton" mnemonicParsing="false" onAction="#printOrder" text="Skriv ut"
+                        AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="190.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOrder" text="Ta bort"
+                        AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
                     <font>
                         <Font size="14.0"/>
                     </font>

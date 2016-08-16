@@ -29,6 +29,7 @@ public class WindowController {
 	
 	@FXML private Button newButton;
 	@FXML private Button editButton;
+	@FXML private Button printButton;
 	@FXML private Button deleteButton;
 	@FXML private AnchorPane infoPane;
 	@FXML private ChoiceBox<String> sortModeBox;
@@ -51,8 +52,9 @@ public class WindowController {
 			image = null;
 		}
 
-		deleteButton.setDisable(true);
 		editButton.setDisable(true);
+		printButton.setDisable(true);
+		deleteButton.setDisable(true);
 
 		//Add strings representing the sorting modes to the choice box
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
@@ -107,8 +109,9 @@ public class WindowController {
 		}
 
 		if (lastSelected != null) {
-			//Enable the edit and delete buttons
+			//Enable the edit, print and delete buttons
 			editButton.setDisable(false);
+			printButton.setDisable(false);
 			deleteButton.setDisable(false);
 
 			//Place the correct pane in infoPane
@@ -143,6 +146,7 @@ public class WindowController {
 		//Disable the buttons and the listview
 		newButton.setDisable(true);
 		editButton.setDisable(true);
+		printButton.setDisable(true);
 		deleteButton.setDisable(true);
 		listView.setDisable(true);
 
@@ -175,9 +179,10 @@ public class WindowController {
 		}
 
 		//Disable the buttons and listview
-		deleteButton.setDisable(true);
-		editButton.setDisable(true);
 		newButton.setDisable(true);
+		editButton.setDisable(true);
+		printButton.setDisable(true);
+		deleteButton.setDisable(true);
 		listView.setDisable(true);
 
 		//Place the correct pane in infoPane
@@ -196,6 +201,14 @@ public class WindowController {
 			System.out.println("Kunde inte ladda editOrder.fxml");
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * TODO
+	 */
+	@FXML
+	private void printOrder(ActionEvent event) {
+		//TODO print
 	}
 
 	/**
@@ -222,8 +235,9 @@ public class WindowController {
 			}
 
 			//Disable buttons
-			deleteButton.setDisable(true);
 			editButton.setDisable(true);
+			printButton.setDisable(true);
+			deleteButton.setDisable(true);
 
 			refreshList();
 		}
