@@ -47,7 +47,6 @@ public abstract class PrintUtils {
 				"\nPris:\t" + order.getPrice() +
 				"\nSäljare:\t" + order.getSeller();
 
-		System.out.println(orderString);
 		return orderString;
 	}
 }
