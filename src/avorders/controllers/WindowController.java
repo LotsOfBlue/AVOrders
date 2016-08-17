@@ -2,7 +2,8 @@ package avorders.controllers;
 
 import avorders.Main;
 import avorders.Order;
-import avorders.OrderUtils;
+import avorders.utils.OrderIO;
+import avorders.utils.OrderUtils;
 import avorders.comparators.CustomerSort;
 import avorders.comparators.IDSort;
 import avorders.comparators.ReverseIDSort;
@@ -78,7 +79,7 @@ public class WindowController {
 	private void refreshList() {
 		//Sorts in the regular way before saving to file
 		OrderUtils.getOrders().sort(new IDSort());
-		OrderUtils.saveToFile();
+		OrderIO.saveToFile();
 
 		//Empty the pane
 		listView.getItems().removeAll(OrderUtils.getOrders());

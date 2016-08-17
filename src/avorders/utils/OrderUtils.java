@@ -1,8 +1,8 @@
-package avorders;
+package avorders.utils;
 
+import avorders.Order;
 import javafx.scene.control.TextField;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +12,7 @@ import java.util.List;
  */
 public abstract class OrderUtils {
 
-    //The file to load from (initialized later)
-    private static File savedOrders;
-
-    private static Integer nextOrder = 1;
+	private static Integer nextOrderID = 1;
     private static List<Order> orderList = new ArrayList<>();
 
 	/**
@@ -23,14 +20,22 @@ public abstract class OrderUtils {
      * @return The ID the next order will have
      */
     public static Integer getNextOrderID() {
-        return nextOrder;
+        return nextOrderID;
     }
 
+	/**
+	 * Set the ID of the next order.
+	 * @param nextOrderID The ID number of the next order
+	 */
+	static void setNextOrderID(Integer nextOrderID) {
+		OrderUtils.nextOrderID = nextOrderID;
+	}
+	
 	/**
      * Increment the ID number.
      */
     public static void incrementOrderID() {
-        nextOrder++;
+        nextOrderID++;
     }
 
     /**
@@ -81,62 +86,5 @@ public abstract class OrderUtils {
             }
         }
         return contents;
-    }
-
-	/**
-     * Get the path of the file used to store the saved Orders.
-     */
-    private static void initializeFile() {
-        File file = null;
-
-        try {
-            file = new File("./SavedOrders");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-
-        savedOrders = file;
-    }
-
-    /**
-     * Load the ID number and all orders from the file.
-     */
-    public static void loadFromFile() {
-        initializeFile();
-
-        try (FileInputStream fileIn = new FileInputStream(savedOrders);
-             ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
-            //Read the file and retrieve the Orders and the ID of the next order from it
-            nextOrder = (Integer)objectIn.readObject();
-            //Read Orders from the file perpetually until EOF is reached
-            while (true) {
-                addOrder((Order) objectIn.readObject());
-            }
-        } catch (EOFException e) {
-            System.out.println("Laddat klart.");
-        }
-        catch (IOException e) {
-            System.out.println("Fel med IO i inputstream!");
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Save the ID number and all orders to the file.
-     */
-    public static void saveToFile() {
-        //Serializes all orders to the file
-        try (FileOutputStream fileOut = new FileOutputStream(savedOrders);
-             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
-            objectOut.writeObject(nextOrder);
-            for (Order o : orderList) {
-                objectOut.writeObject(o);
-            }
-        } catch (IOException e) {
-            System.out.println("Fel med IO i outputstream.");
-            e.printStackTrace();
-        }
     }
 }
