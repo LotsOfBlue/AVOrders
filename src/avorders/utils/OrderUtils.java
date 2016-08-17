@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Contains methods for handling Orders and the editing of such, as well as related I/O.
+ * Contains methods for handling Orders and the editing of such.
  * @author Johan Blomberg
  */
 public abstract class OrderUtils {

@@ -8,7 +8,7 @@ import java.io.*;
  * Contains methods related to handling of Order I/O.
  * @author Johan Blomberg
  */
-public class OrderIO {
+public abstract class OrderIO {
 	//The file to load from (initialized later)
 	private static File savedOrders;
 	

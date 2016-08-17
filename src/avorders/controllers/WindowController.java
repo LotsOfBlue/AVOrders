@@ -7,6 +7,7 @@ import avorders.utils.OrderUtils;
 import avorders.comparators.CustomerSort;
 import avorders.comparators.IDSort;
 import avorders.comparators.ReverseIDSort;
+import avorders.utils.PrintUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -205,11 +206,13 @@ public class WindowController {
 	}
 
 	/**
-	 * TODO
+	 * Print the currently selected order.
 	 */
 	@FXML
 	private void printOrder(ActionEvent event) {
-		//TODO print
+		if (lastSelected != null) {
+			PrintUtils.printOrder(lastSelected);
+		}
 	}
 
 	/**
