@@ -3,6 +3,9 @@ package avorders.utils;
 import avorders.Order;
 
 import javax.print.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Contains methods used for printing orders.
@@ -15,13 +18,10 @@ public abstract class PrintUtils {
 	 * @param order The order to print
 	 */
 	public static void printOrder(Order order) {
-		String output = buildOrderString(order);
-
-		DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
-		Doc orderDoc = new SimpleDoc(output.getBytes(), flavor, null);
+		Doc orderDoc = prepareDoc(order);
 
 		PrintService defaultPrinter = PrintServiceLookup.lookupDefaultPrintService();
-		if (defaultPrinter != null) {
+		if (defaultPrinter != null && orderDoc != null) {
 			DocPrintJob job = defaultPrinter.createPrintJob();
 			try {
 				job.print(orderDoc, null);
@@ -29,6 +29,43 @@ public abstract class PrintUtils {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * Assemble a Doc containing a String representation of the given Order.
+	 * @param order The order to use as a base for the String
+	 * @return A SimpleDoc containing the Order to be printed
+	 */
+	private static Doc prepareDoc(Order order) {
+		Doc doc;
+		DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+
+		//Prepare the text to be printed
+		String output = buildOrderString(order);
+		byte[]outputBytes = null;
+		InputStream in = null;
+
+		//Break the string down into bytes
+		try {
+			outputBytes = output.getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		//Make an input stream from the bytes
+		if (outputBytes != null) {
+			in = new ByteArrayInputStream(outputBytes);
+		}
+
+		//If everything works, create a document
+		if (in != null) {
+			doc = new SimpleDoc(in, flavor, null);
+		}
+		else {
+			doc = null;
+		}
+
+		return doc;
 	}
 
 	/**
@@ -40,12 +77,32 @@ public abstract class PrintUtils {
 	private static String buildOrderString(Order order) {
 		String orderString;
 
-		orderString = "Namn:   " + order.getName() +
-				"\r\nTelefon:   " + order.getPhoneNo() +
-				"\r\nVara:   " + order.getItem() +
-				"\r\nArtikelnummer:   " + order.getItemNo() +
-				"\r\nPris:   " + order.getPrice() +
-				"\r\nSäljare:   " + order.getSeller();
+		String name = order.getName();
+		String phoneNo = order.getPhoneNo();
+		String item = order.getItem();
+		String itemNo = order.getItemNo();
+		String price = order.getPrice();
+		String seller = order.getSeller();
+
+		orderString = "Namn:   " + name;
+
+		if (phoneNo != null && phoneNo.trim().length() > 0) {
+			orderString += "\r\nTelefon:   " + phoneNo;
+		}
+
+		orderString += "\r\nVara:   " + item;
+
+		if (itemNo != null && itemNo.trim().length() > 0) {
+			orderString += "\r\nArtikelnr:   " + itemNo;
+		}
+
+		if (price != null && price.trim().length() > 0) {
+			orderString += "\r\nPris:   " + price;
+		}
+
+		if (seller != null && seller.trim().length() > 0) {
+			orderString += "\r\nSäljare:   " + seller;
+		}
 
 		return orderString;
 	}
