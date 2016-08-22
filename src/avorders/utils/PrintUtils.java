@@ -40,12 +40,12 @@ public abstract class PrintUtils {
 	private static String buildOrderString(Order order) {
 		String orderString;
 
-		orderString = "\nNamn:\t" + order.getName() +
-				"\nTelefon:\t" + order.getPhoneNo() +
-				"\nVara:\t" + order.getItem() +
-				"\nArtikelnummer:\t" + order.getItemNo() +
-				"\nPris:\t" + order.getPrice() +
-				"\nSäljare:\t" + order.getSeller();
+		orderString = "Namn:   " + order.getName() +
+				"\r\nTelefon:   " + order.getPhoneNo() +
+				"\r\nVara:   " + order.getItem() +
+				"\r\nArtikelnummer:   " + order.getItemNo() +
+				"\r\nPris:   " + order.getPrice() +
+				"\r\nSäljare:   " + order.getSeller();
 
 		return orderString;
 	}
