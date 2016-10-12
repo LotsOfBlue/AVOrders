@@ -7,11 +7,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
-            prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="650.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.60"
             fx:controller="avorders.controllers.DisplayOrderController">
-    <Label fx:id="idLabel" layoutX="14.0" layoutY="64.0" text="Beställning nr." AnchorPane.leftAnchor="20.0"
-           AnchorPane.topAnchor="55.0">
+    <Label fx:id="idLabel" text="Beställning nr." AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
         <font>
             <Font name="System Bold" size="20.0"/>
         </font>
@@ -126,7 +125,7 @@
                 <Font name="System Bold" size="14.0"/>
             </font>
         </Label>
-        <Label fx:id="commentLabel" GridPane.columnIndex="1" GridPane.rowIndex="6">
+        <Label fx:id="commentLabel" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
             <font>
                 <Font name="System Bold" size="14.0"/>
             </font>

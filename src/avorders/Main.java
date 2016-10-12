@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import avorders.utils.OrderIO;
 
 public class Main extends Application {
 
@@ -29,7 +30,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        OrderUtils.loadFromFile();
+        OrderIO.loadFromFile();
         launch(args);
     }
 }

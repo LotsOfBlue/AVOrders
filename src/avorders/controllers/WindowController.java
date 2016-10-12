@@ -2,10 +2,12 @@ package avorders.controllers;
 
 import avorders.Main;
 import avorders.Order;
-import avorders.OrderUtils;
+import avorders.utils.OrderIO;
+import avorders.utils.OrderUtils;
 import avorders.comparators.CustomerSort;
 import avorders.comparators.IDSort;
 import avorders.comparators.ReverseIDSort;
+import avorders.utils.PrintUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,7 @@ public class WindowController {
 	
 	@FXML private Button newButton;
 	@FXML private Button editButton;
+	@FXML private Button printButton;
 	@FXML private Button deleteButton;
 	@FXML private AnchorPane infoPane;
 	@FXML private ChoiceBox<String> sortModeBox;
@@ -51,8 +54,9 @@ public class WindowController {
 			image = null;
 		}
 
-		deleteButton.setDisable(true);
 		editButton.setDisable(true);
+		printButton.setDisable(true);
+		deleteButton.setDisable(true);
 
 		//Add strings representing the sorting modes to the choice box
 		sortModeBox.getItems().addAll("ID (stigande)", "ID (fallande)", "Kund");
@@ -76,7 +80,7 @@ public class WindowController {
 	private void refreshList() {
 		//Sorts in the regular way before saving to file
 		OrderUtils.getOrders().sort(new IDSort());
-		OrderUtils.saveToFile();
+		OrderIO.saveToFile();
 
 		//Empty the pane
 		listView.getItems().removeAll(OrderUtils.getOrders());
@@ -107,8 +111,9 @@ public class WindowController {
 		}
 
 		if (lastSelected != null) {
-			//Enable the edit and delete buttons
+			//Enable the edit, print and delete buttons
 			editButton.setDisable(false);
+			printButton.setDisable(false);
 			deleteButton.setDisable(false);
 
 			//Place the correct pane in infoPane
@@ -143,6 +148,7 @@ public class WindowController {
 		//Disable the buttons and the listview
 		newButton.setDisable(true);
 		editButton.setDisable(true);
+		printButton.setDisable(true);
 		deleteButton.setDisable(true);
 		listView.setDisable(true);
 
@@ -175,9 +181,10 @@ public class WindowController {
 		}
 
 		//Disable the buttons and listview
-		deleteButton.setDisable(true);
-		editButton.setDisable(true);
 		newButton.setDisable(true);
+		editButton.setDisable(true);
+		printButton.setDisable(true);
+		deleteButton.setDisable(true);
 		listView.setDisable(true);
 
 		//Place the correct pane in infoPane
@@ -195,6 +202,16 @@ public class WindowController {
 		catch (IOException e) {
 			System.out.println("Kunde inte ladda editOrder.fxml");
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Print the currently selected order.
+	 */
+	@FXML
+	private void printOrder(ActionEvent event) {
+		if (lastSelected != null) {
+			PrintUtils.printOrder(lastSelected);
 		}
 	}
 
@@ -222,8 +239,9 @@ public class WindowController {
 			}
 
 			//Disable buttons
-			deleteButton.setDisable(true);
 			editButton.setDisable(true);
+			printButton.setDisable(true);
+			deleteButton.setDisable(true);
 
 			refreshList();
 		}
