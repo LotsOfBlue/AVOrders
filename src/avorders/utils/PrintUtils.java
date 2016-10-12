@@ -5,7 +5,7 @@ import avorders.Order;
 import javax.print.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 /**
  * Contains methods used for printing orders.
@@ -46,11 +46,7 @@ public abstract class PrintUtils {
 		InputStream in = null;
 
 		//Break the string down into bytes
-		try {
-			outputBytes = output.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		outputBytes = output.getBytes(Charset.defaultCharset());
 
 		//Make an input stream from the bytes
 		if (outputBytes != null) {
